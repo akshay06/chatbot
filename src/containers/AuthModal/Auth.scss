@@ -1,0 +1,63 @@
+.headingHolder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    padding: 30px 30px 10px;
+    font-size: 18px;
+    text-align: center;
+    span {
+        margin-right: 10px;
+        opacity: .5;
+        vertical-align: top;
+        display: inline-block;
+        cursor: pointer;
+        hr {
+            display: none;
+        }
+        &.active {
+            opacity: 1;
+            hr {
+                width: 50px;
+                height: 3px;
+                margin: 15px 0 0;
+                border: none;
+                outline: none;
+                display: block;
+                @media #{$desktop} {
+                    margin: 3px 0 0;
+                }
+            }
+        }
+    }
+    i {
+        float: right;
+        opacity: .5;
+        cursor: pointer;
+    }
+}
+
+.loginSubmit {
+    padding: 0 50px;
+    height: 50px;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    font-size: 18px;
+    background-color: #ff6a6a;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.btnWired {
+    float: left;
+    width: 100%;
+    margin-top: 30px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    &:before {
+        content: '\2190';
+        margin-right: 10px;
+    }
+}

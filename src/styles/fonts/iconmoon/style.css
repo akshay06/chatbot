@@ -1,0 +1,238 @@
+@font-face {
+  font-family: 'icomoon';
+  src:
+    url('fonts/icomoon.ttf?n5kqvp') format('truetype'),
+    url('fonts/icomoon.woff?n5kqvp') format('woff'),
+    url('fonts/icomoon.svg?n5kqvp#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon_"], [class*=" icon_"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon_right_solid:before {
+  content: "\ea1c";
+}
+.icon_down_solid:before {
+  content: "\ea1d";
+}
+.icon_women:before {
+  content: "\e900";
+}
+.icon_wishlist_filled:before {
+  content: "\e901";
+}
+.icon_wishlist:before {
+  content: "\e902";
+}
+.icon_wallet:before {
+  content: "\e903";
+}
+.icon_user:before {
+  content: "\e904";
+}
+.icon_default:before {
+  content: "\e905";
+}
+.icon_undo:before {
+  content: "\e906";
+}
+.icon_track_order:before {
+  content: "\e907";
+}
+.icon_topwear:before {
+  content: "\e908";
+}
+.icon_star_filled:before {
+  content: "\e909";
+}
+.icon_star:before {
+  content: "\e90a";
+}
+.icon_sort_by:before {
+  content: "\e90b";
+}
+.icon_size_chart:before {
+  content: "\e90c";
+}
+.icon_share:before {
+  content: "\e90d";
+}
+.icon_search:before {
+  content: "\e90e";
+}
+.icon_rupee:before {
+  content: "\e90f";
+}
+.icon_previous_arrow:before {
+  content: "\e910";
+}
+.icon_previous:before {
+  content: "\e911";
+}
+.icon_plus:before {
+  content: "\e912";
+}
+.icon_order_cancel:before {
+  content: "\e913";
+}
+.icon_official_merchandise:before {
+  content: "\e914";
+}
+.icon_office:before {
+  content: "\e915";
+}
+.icon_notifications:before {
+  content: "\e916";
+}
+.icon_next_arrow:before {
+  content: "\e917";
+}
+.icon_next:before {
+  content: "\e918";
+}
+.icon_down:before {
+  content: "\e919";
+}
+.icon_up:before {
+  content: "\e91a";
+}
+.icon_mobile_covers:before {
+  content: "\e91b";
+}
+.icon_minus:before {
+  content: "\e91c";
+}
+.icon_menu:before {
+  content: "\e91d";
+}
+.icon_men:before {
+  content: "\e91e";
+}
+.icon_laptop_skins:before {
+  content: "\e91f";
+}
+.icon_home:before {
+  content: "\e920";
+}
+.icon_help:before {
+  content: "\e921";
+}
+.icon_gift_cards:before {
+  content: "\e922";
+}
+.icon_filter:before {
+  content: "\e923";
+}
+.icon_fanbook:before {
+  content: "\e924";
+}
+.icon_edit:before {
+  content: "\e925";
+}
+.icon_twitter:before {
+  content: "\e926";
+}
+.icon_delights:before {
+  content: "\e927";
+}
+.icon_delete:before {
+  content: "\e928";
+}
+.icon_coupon_code:before {
+  content: "\e929";
+}
+.icon_contact_us:before {
+  content: "\e92a";
+}
+.icon_cod:before {
+  content: "\e92b";
+}
+.icon_close:before {
+  content: "\e92c";
+}
+.icon_clear:before {
+  content: "\e92d";
+}
+.icon_card:before {
+  content: "\e92e";
+}
+.icon_bottomwear:before {
+  content: "\e92f";
+}
+.icon_bank:before {
+  content: "\e930";
+}
+.icon_bag:before {
+  content: "\e931";
+}
+.icon_attachment:before {
+  content: "\e932";
+}
+.icon_apple:before {
+  content: "\e933";
+}
+.icon_android:before {
+  content: "\e934";
+}
+.icon_snapchat:before {
+  content: "\e935";
+}
+.icon_instagram:before {
+  content: "\e936";
+}
+.icon_google_plus:before {
+  content: "\e937";
+}
+.icon_facebook:before {
+  content: "\e938";
+}
+.icon_pinterest:before {
+  content: "\e939";
+}
+.icon_tick:before {
+  content: "\e93c";
+}
+.icon_edit_filled:before {
+  content: "\e93d";
+}
+.icon_bullet:before {
+  content: "\e93e";
+}
+.icon_selected_default:before {
+  content: "\e93f";
+}
+.icon_bewakoof_logo:before {
+  content: "\e940";
+}
+.icon_google:before {
+  content: "\e941";
+}
+.icon_return_order:before {
+  content: "\e942";
+}
+.icon_instagram_new:before {
+  content: "\e943";
+}
+.icon_ship:before {
+  content: "\e944";
+}
+.icon_gift:before {
+  content: "\e947";
+}
+.icon_whatsapp:before {
+  content: "\ea93";
+}

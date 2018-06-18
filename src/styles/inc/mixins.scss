@@ -1,0 +1,96 @@
+//shadows
+@mixin box-shadow($shadow...) {
+    -webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
+    box-shadow: $shadow;
+}
+
+@mixin scrollbar($width) {
+    &::-webkit-scrollbar {
+        width: $width;
+        background-color: $transparent-black-2;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: $site-blue-color;
+    }
+    &::-webkit-scrollbar-thumb:window-inactive {
+        background-color: $site-blue-color;
+    }
+}
+
+@mixin size($width, $height) {
+    height: $height;
+    width: $width;
+}
+
+@mixin position($position, $top, $left, $zindex) {
+    position: $position;
+    top: $top;
+    left: $left;
+    z-index: $zindex;
+}
+
+@mixin icon {
+    display: inline-block;
+    font-family: $font-icons;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin transition($transition) {
+    -webkit-transition: $transition;
+    -moz-transition: $transition;
+    -ms-transition: $transition;
+    -o-transition: $transition;
+    transition: $transition;
+}
+
+@mixin transform($transform) {
+    -ms-transform: $transform;
+    -webkit-transform: $transform;
+    transform: $transform;
+}
+
+@mixin animation($animation) {
+    -webkit-animation: $animation;
+    -moz-animation: $animation;
+    -o-animation: $animation;
+    animation: $animation;
+}
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+@mixin button($width, $height, $background, $color, $radius) {
+    @include size($width, $height);
+    @include box-shadow(0 -2px 1px darken($background, 15%) inset);
+    cursor: pointer;
+    line-height: $height;
+    background: $background;
+    color: $color;
+    border-radius: $radius;
+    border: none;
+}
+
+@mixin selection {
+     ::-moz-selection {
+        @content;
+    }
+     ::selection {
+        @content;
+    }
+}

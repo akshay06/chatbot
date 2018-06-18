@@ -1,0 +1,36 @@
+.buttonDefaults {
+  height: 40px;
+  padding: 0px 15px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.primaryRed {
+  @extend .buttonDefaults;
+  background: $siteRed;
+  color: white;
+  &:hover {
+    background: darken($siteRed, 15%);
+  }
+}
+.primaryBlue {
+  @extend .buttonDefaults;
+  background: $siteBlue;
+  color: white;
+  &:hover {
+    background: darken($siteBlue, 15%);
+  }
+}
+
+.secondary {
+  @extend .buttonDefaults;
+  border: 1px solid #4a4a4a;
+  color: #4a4a4a;
+}
+
+// .rounded {
+//   display: block;
+// }
+
+.iconOnly {
+  display: block;
+}

@@ -1,0 +1,443 @@
+@import "inc/reset";
+@import "swiper";
+@font-face {
+    font-family: 'icomoon';
+    src: url('./fonts/iconmoon/fonts/icomoon.ttf?bznh19') format('truetype'), url('./fonts/iconmoon/fonts/icomoon.woff?bznh19') format('woff'), url('./fonts/iconmoon/fonts/icomoon.svg?bznh19#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class*="icon_"],
+[class*=" icon_"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+    font-display: swap;
+    font-family: montExtraLite;
+    src: local('\263A'), url("./fonts/Montserrat-ExtraLight.ttf") format('truetype');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: montLite;
+    src: local('\263A'), url("./fonts/Montserrat-Light.ttf") format('truetype');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: montReg;
+    src: local('\263A'), url("./fonts/Montserrat-Regular.ttf") format('truetype');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: montMed;
+    src: local('\263A'), url("./fonts/Montserrat-Medium.ttf") format('truetype');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: montSem;
+    src: local('\263A'), url("./fonts/Montserrat-SemiBold.ttf") format('truetype');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: montBold;
+    src: local('\263A'), url("./fonts/Montserrat-Bold.ttf") format('truetype');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: montBlack;
+    src: local('\263A'), url("./fonts/Montserrat-Black.ttf") format('truetype');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: montExtraBold;
+    src: local('\263A'), url("./fonts/Montserrat-ExtraBold.ttf") format('truetype');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: playReg;
+    src: local('\263A'), url("./fonts/PlayfairDisplay-Regular.ttf") format('truetype');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: playBold;
+    src: local('\263A'), url("./fonts/PlayfairDisplay-Bold.ttf") format('truetype');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: playBlack;
+    src: local('\263A'), url("./fonts/PlayfairDisplay-Black.ttf") format('truetype');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: playBold;
+    src: local('\263A'), url("./fonts/PlayfairDisplay-Bold.ttf") format('truetype');
+}
+
+body {
+    text-rendering: optimizeLegibility;
+    font-family: montreg;
+}
+
+*:active,
+*:focus {
+    outline: none;
+}
+
+.noPd {
+    padding: 0px !important;
+}
+
+.noMg {
+    margin: 0px !important;
+}
+
+.containerHeight {
+    min-height: 600px;
+    margin-top: 80px;
+}
+
+@media #{$desktop} {
+    .containerHeight {
+        margin-top: 100px;
+    }
+}
+@media #{$phone} {
+    .noPdXs {
+        padding: 0 !important;
+    }
+    .noMgXs {
+        margin: 0px !important;
+    }
+}
+
+.menuWrap {
+    position: fixed;
+    width: 100%;
+    padding-top: 80px;
+    @media #{$desktop} {
+        padding-top: 100px;
+    }
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    transition: left linear 50ms;
+    overflow: hidden;
+    .menu {
+        height: 100%;
+        padding: 30px;
+        @media #{$desktop} {
+            float: left;
+            padding: 55px 120px 55px 85px;
+        }
+        overflow: auto;
+        outline: 1px solid #9b9b9b;
+        background: white;
+    }
+    a {
+        display: block;
+        padding: 12.5px 0;
+        font-size: 18px;
+        color: #9b9b9b;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: bold;
+        &.active,
+        &:hover {
+            color: #de1f26;
+            text-decoration: none;
+        }
+    }
+}
+
+#menu {
+    left: -100%;
+    transition: left 0.2s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+}
+
+#hambu:focus-within+#menu {
+    left: 0;
+}
+
+.xgroup {
+    width: 100%;
+    margin-bottom: 45px;
+    position: relative;
+    display: inline-block;
+    .hint {
+        position: absolute;
+        color: #bcbcbc;
+        font-size: 12px;
+        right: 8px;
+        top: 6px;
+        cursor: pointer;
+        display: none;
+        i {
+            font-size: 16px;
+            color: green;
+        }
+    }
+    .countryCode {
+        position: absolute;
+        top: 7px;
+        left: 0;
+        font-size: 14px;
+        display: none;
+        span {
+            padding: 4px;
+            color: #bcbcbc;
+        }
+    }
+    .msgs {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        padding: 6px 0;
+        opacity: 0.9;
+        font-size: 12px;
+        white-space: nowrap;
+        text-align: left;
+    }
+    input {
+        width: 100%;
+        height: auto !important;
+        padding: 5px 0;
+        display: block;
+        font-size: 14px;
+        outline: none !important;
+        border: none !important;
+        border-top: 1px solid transparent !important;
+        border-bottom: 1px solid #bcbcbc !important;
+        border-radius: 0px;
+        &[readOnly] {
+            color: #999;
+            cursor: default;
+        }
+        &:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0px 1000px white inset;
+        }
+    }
+    input:focus {
+        outline: none;
+    }
+    label {
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.7px;
+        opacity: 0.5;
+        color: #181818;
+        position: absolute;
+        left: 0;
+        top: 7px;
+        pointer-events: none;
+        transition: 0.1s ease all;
+    }
+    input:focus~label,
+    input:not([value=''])~label {
+        top: -10px;
+        font-size: 11px;
+    }
+    .bar {
+        position: relative;
+        display: block;
+        width: 100%;
+    }
+    .bar:before,
+    .bar:after {
+        content: '';
+        height: 1px;
+        width: 0;
+        bottom: 0;
+        position: absolute;
+        background: #181818;
+        transition: 0.1s ease all;
+    }
+    .bar:before {
+        left: 50%;
+    }
+    .bar:after {
+        right: 50%;
+    }
+    input:focus~.bar:before,
+    input:focus~.bar:after {
+        width: 50%;
+    }
+}
+
+.showCountryCode {
+    input {
+        padding-left: 35px;
+    }
+    .countryCode {
+        display: block;
+    }
+}
+
+.showHint {
+    input {
+        padding-right: 45px;
+    }
+    .hint {
+        display: block;
+    }
+}
+
+.success {
+    color: #ff6a6a !important;
+}
+
+.error {
+    color: #db3236 !important;
+}
+
+.busy p {
+    background: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 2.5px;
+    padding: 5px;
+    height: 0.6em;
+    width: 0.6em;
+    animation: busy 0.8s linear infinite;
+}
+
+.busy p:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.busy p:nth-child(1) {
+    animation-delay: 0.4s;
+}
+
+@keyframes busy {
+    0% {
+        background: transparent;
+    }
+    50% {
+        background: #fff;
+    }
+    100% {
+        background: transparent;
+    }
+}
+
+.backdrop {
+    background: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 102;
+    overflow: auto;
+    visibility: visible;
+    cursor: pointer;
+    animation: fadeIn 0.05s ease-out;
+    @media #{$desktop} {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.popup {
+    height: 100%;
+    form {
+        text-align: center;
+    }
+    @media #{$desktop} {
+        max-width: 430px;
+        height: auto;
+        form {
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+    }
+}
+
+.fullScreenXs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .popup {
+        height: auto;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.genderBtn {
+    float: right;
+    margin-left: 5px;
+    width: 77px;
+    padding: 7.5px 0;
+    background: #fff;
+    color: #979797;
+    border: 1px solid;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.genderBtn:hover,
+.gbactive {
+    color: #000;
+    border-color: #fdd835;
+    background-color: #fdd835;
+}
+
+.bodyHolder {
+    float: left;
+    width: 100%;
+    padding: 50px 30px;
+}
+
+.popupClose {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 50px;
+    padding: 20px;
+    font-style: normal;
+    line-height: 25px;
+    font-family: montLite;
+}
+
+.bluebtn {
+    width: 100px;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    color: white;
+    background-color: $siteBlue;
+    letter-spacing: 2px;
+}
