@@ -1,349 +1,401 @@
-{
-  "value": [
-  {
-    "grid": "grid-8-4",
-    "data": [{
-      "0": "category",
-      "1": "action",
-      "2": "label",
-      "3": "gaValue",
-      "4": "https://images.bewakoof.com/banner/new-arrivals-desktop-box-women-2-1527254647.jpg",
-      "5": "imgTitle",
-      "6": "imgAlt",
-      "7": "link",
-      "8": 50,
-      "9": 50,
-      "10": 200,
-      "11": "center",
-      "12": "heading",
-      "13": 30,
-      "14": "#00f",
-      "15": "subHeading",
-      "16": 20,
-      "17": "#0f0",
-      "18": "buttonText &gt;",
-      "19": "#f00",
-      "20": "1px solid",
-      "21": "transparent",
-      "22": 16
-    }, {
-      "0": "category",
-      "1": "action",
-      "2": "label",
-      "3": "gaValue",
-      "4": "https://images.bewakoof.com/banner/new-arrivals-collection-for-men-bewakoof-1527231647.jpg",
-      "5": "imgTitle",
-      "6": "imgAlt",
-      "7": "link",
-      "8": 50,
-      "9": 50,
-      "10": 200,
-      "11": "center",
-      "12": "heading",
-      "13": 30,
-      "14": "#00f",
-      "15": "subHeading",
-      "16": 20,
-      "17": "#0f0",
-      "18": "buttonText &gt;",
-      "19": "#f00",
-      "20": "1px solid",
-      "21": "transparent",
-      "22": 16
-    }]
-  }, {
-    "grid": "grid-4-8",
-    "data": [{
-      "0": "category",
-      "1": "action",
-      "2": "label",
-      "3": "gaValue",
-      "4": "https://images.bewakoof.com/banner/mobile-covers-cases-online-india-bewakoof-1527231718.jpg",
-      "5": "imgTitle",
-      "6": "imgAlt",
-      "7": "link",
-      "8": 50,
-      "9": 50,
-      "10": 200,
-      "11": "center",
-      "12": "heading",
-      "13": 30,
-      "14": "#00f",
-      "15": "subHeading",
-      "16": 20,
-      "17": "#0f0",
-      "18": "buttonText &gt;",
-      "19": "#f00",
-      "20": "1px solid",
-      "21": "transparent",
-      "22": 16
-    }, {
-      "0": "category",
-      "1": "action",
-      "2": "label",
-      "3": "gaValue",
-      "4": "https://images.bewakoof.com/banner/men-bottomwear-clothing-online-bewakoof-min-1527231982.jpg",
-      "5": "imgTitle",
-      "6": "imgAlt",
-      "7": "link",
-      "8": 50,
-      "9": 50,
-      "10": 200,
-      "11": "center",
-      "12": "heading",
-      "13": 30,
-      "14": "#00f",
-      "15": "subHeading",
-      "16": 20,
-      "17": "#0f0",
-      "18": "buttonText &gt;",
-      "19": "#f00",
-      "20": "1px solid",
-      "21": "transparent",
-      "22": 16
-    }]
-  }, {
-    "grid": "grid-8-4",
-    "data": [{
-      "0": "category",
-      "1": "action",
-      "2": "label",
-      "3": "gaValue",
-      "4": "https://images.bewakoof.com/banner/casual-bags-backpacks-online-bewakoof-1527232172.jpg",
-      "5": "imgTitle",
-      "6": "imgAlt",
-      "7": "link",
-      "8": 50,
-      "9": 50,
-      "10": 200,
-      "11": "center",
-      "12": "heading",
-      "13": 30,
-      "14": "#00f",
-      "15": "subHeading",
-      "16": 20,
-      "17": "#0f0",
-      "18": "buttonText &gt;",
-      "19": "#f00",
-      "20": "1px solid",
-      "21": "transparent",
-      "22": 16
-    }, {
-      "0": "category",
-      "1": "action",
-      "2": "label",
-      "3": "gaValue",
-      "4": "https://images.bewakoof.com/banner/collaboration--1--1526289212.jpg",
-      "5": "imgTitle",
-      "6": "imgAlt",
-      "7": "link",
-      "8": 50,
-      "9": 50,
-      "10": 200,
-      "11": "center",
-      "12": "heading",
-      "13": 30,
-      "14": "#00f",
-      "15": "subHeading",
-      "16": 20,
-      "17": "#0f0",
-      "18": "buttonText &gt;",
-      "19": "#f00",
-      "20": "1px solid",
-      "21": "transparent",
-      "22": 16
-
-    }]
-  }, {
-    "grid": "grid-4-8",
-    "data": [{
-      "0": "category",
-      "1": "action",
-      "2": "label",
-      "3": "gaValue",
-      "4": "https://images.bewakoof.com/banner/factory-outlet-store-collection-bewakoof-1527232232.jpg",
-      "5": "imgTitle",
-      "6": "imgAlt",
-      "7": "link",
-      "8": 50,
-      "9": 50,
-      "10": 200,
-      "11": "center",
-      "12": "heading",
-      "13": 30,
-      "14": "#00f",
-      "15": "subHeading",
-      "16": 20,
-      "17": "#0f0",
-      "18": "buttonText &gt;",
-      "19": "#f00",
-      "20": "1px solid",
-      "21": "transparent",
-      "22": 16
-    }, {
-      "0": "category",
-      "1": "action",
-      "2": "label",
-      "3": "gaValue",
-      "4": "https://images.bewakoof.com/banner/bewakoof-offers-coupons-delights-bewakoof-1527232467.jpg",
-      "5": "imgTitle",
-      "6": "imgAlt",
-      "7": "link",
-      "8": 50,
-      "9": 50,
-      "10": 200,
-      "11": "center",
-      "12": "heading",
-      "13": 30,
-      "14": "#00f",
-      "15": "subHeading",
-      "16": 20,
-      "17": "#0f0",
-      "18": "buttonText &gt;",
-      "19": "#f00",
-      "20": "1px solid",
-      "21": "transparent",
-      "22": 16
-    }]
-
-  }, {
-    "grid": "desk-banner",
-    "data": [{
-      "0": "category",
-      "1": "action",
-      "2": "label",
-      "3": "gaValue",
-      "4": "https://images.bewakoof.com/banner/no-brain-no-pain-t-shirt-dotd-27-may-desk-banner-1527422746.jpg",
-      "5": "imgTitle",
-      "6": "imgAlt",
-      "7": "link",
-      "8": 50,
-      "9": 50,
-      "10": 200,
-      "11": "center",
-      "12": "heading",
-      "13": 30,
-      "14": "#00f",
-      "15": "subHeading",
-      "16": 20,
-      "17": "#0f0",
-      "18": "buttonText &gt;",
-      "19": "#f00",
-      "20": "1px solid",
-      "21": "transparent",
-      "22": 16
-    }, {
-      "0": "category",
-      "1": "action",
-      "2": "label",
-      "3": "gaValue",
-      "4": "https://images.bewakoof.com/banner/the-mountains-are-calling-tshirts-bewakoof-desktop-1527254731.jpg",
-      "5": "imgTitle",
-      "6": "imgAlt",
-      "7": "link",
-      "8": 50,
-      "9": 50,
-      "10": 200,
-      "11": "right",
-      "12": "heading <br /><br /><br />",
-      "13": 30,
-      "14": "#00f",
-      "15": "subHeading",
-      "16": 20,
-      "17": "#0f0",
-      "18": "buttonText",
-      "19": "#f00",
-      "20": "1px solid",
-      "21": "yellow",
-      "22": 16
-    }, {
-      "0": "category",
-      "1": "action",
-      "2": "label",
-      "3": "gaValue",
-      "4": "https://images.bewakoof.com/banner/men-bestsellers-t-shirts-online-india-bewakoof-1527254750.jpg",
-      "5": "imgTitle",
-      "6": "imgAlt",
-      "7": "link",
-      "8": 50,
-      "9": 50,
-      "10": 200,
-      "11": "center",
-      "12": "heading",
-      "13": 30,
-      "14": "#00f",
-      "15": "subHeading",
-      "16": 20,
-      "17": "#0f0",
-      "18": "buttonText",
-      "19": "#f00",
-      "20": "1px solid",
-      "21": "yellow",
-      "22": 16
-    }, {
-      "0": "category",
-      "1": "action",
-      "2": "label",
-      "3": "gaValue",
-      "4": "https://images.bewakoof.com/banner/womens-tops-online-india-bewakoof-1527254765.jpg",
-      "5": "imgTitle",
-      "6": "imgAlt",
-      "7": "link",
-      "8": 50,
-      "9": 50,
-      "10": 200,
-      "11": "center",
-      "12": "heading",
-      "13": 30,
-      "14": "#00f",
-      "15": "subHeading",
-      "16": 20,
-      "17": "#0f0",
-      "18": "buttonText",
-      "19": "#f00",
-      "20": "1px solid",
-      "21": "yellow",
-      "22": 16
-    }]
-  }, {
-    "grid": "mob-banner",
-    "data": [{
-      "0": "category",
-      "1": "action",
-      "2": "label",
-      "3": "gaValue",
-      "4": "https://images.bewakoof.com/banner/no-brain-no-pain-t-shirt-dotd-27-may-mob-banner-1527422783.jpg",
-      "5": "imgTitle",
-      "6": "imgAlt",
-      "7": "link"      
-    }, {
-      "0": "category",
-      "1": "action",
-      "2": "label",
-      "3": "gaValue",
-      "4": "https://images.bewakoof.com/banner/the-mountains-are-calling-tshirts-bewakoof-mobile-1527249581.jpg",
-      "5": "imgTitle",
-      "6": "imgAlt",
-      "7": "link"
-    }, {
-      "0": "category",
-      "1": "action",
-      "2": "label",
-      "3": "gaValue",
-      "4": "https://images.bewakoof.com/banner/men-bestsellers-t-shirts-online-india-bewakoof-mobile-1527233838.jpg",
-      "5": "imgTitle",
-      "6": "imgAlt",
-      "7": "link"
-    }, {
-      "0": "category",
-      "1": "action",
-      "2": "label",
-      "3": "gaValue",
-      "4": "https://images.bewakoof.com/banner/womens-tops-online-india-bewakoof-mobile-1527233796.jpg",
-      "5": "imgTitle",
-      "6": "imgAlt",
-      "7": "link"
-    }]
-
-  }]
-}
+[{
+  "value": 1,
+  "trigger": 6,
+  "label": "Mumbai"
+}, {
+  "value": 2,
+  "trigger": 6,
+  "label": "Delhi"
+}, {
+  "value": 3,
+  "trigger": 6,
+  "label": "Kolkata"
+}, {
+  "value": 4,
+  "trigger": 6,
+  "label": "Pune"
+}, {
+  "value": 5,
+  "trigger": 6,
+  "label": "Bengaluru"
+}, {
+  "value": 6,
+  "trigger": 6,
+  "label": "Noida"
+}, {
+  "value": 7,
+  "trigger": 6,
+  "label": "Jaipur"
+}, {
+  "value": 8,
+  "trigger": 6,
+  "label": "Thane"
+}, {
+  "value": 9,
+  "trigger": 6,
+  "label": "Navi Mumbai"
+}, {
+  "value": 10,
+  "trigger": 6,
+  "label": "Ahmedabad"
+}, {
+  "value": 11,
+  "trigger": 6,
+  "label": "Chennai"
+}, {
+  "value": 12,
+  "trigger": 6,
+  "label": "Hyderabad"
+}, {
+  "value": 13,
+  "trigger": 6,
+  "label": "Gurgaon"
+}, {
+  "value": 14,
+  "trigger": 6,
+  "label": "Gandhi Nagar"
+}, {
+  "value": 15,
+  "trigger": 6,
+  "label": "Surat"
+}, {
+  "value": 16,
+  "trigger": 6,
+  "label": "Mangalore"
+}, {
+  "value": 17,
+  "trigger": 6,
+  "label": "Hooghly"
+}, {
+  "value": 18,
+  "trigger": 6,
+  "label": "Vadodara"
+}, {
+  "value": 19,
+  "trigger": 6,
+  "label": "Rajkot"
+}, {
+  "value": 20,
+  "trigger": 6,
+  "label": "Bhavnagar"
+}, {
+  "value": 21,
+  "trigger": 6,
+  "label": "Amreli"
+}, {
+  "value": 22,
+  "trigger": 6,
+  "label": "Anand"
+}, {
+  "value": 23,
+  "trigger": 6,
+  "label": "Anjar"
+}, {
+  "value": 24,
+  "trigger": 6,
+  "label": "Ankleshwar"
+}, {
+  "value": 25,
+  "trigger": 6,
+  "label": "Bardoli"
+}, {
+  "value": 26,
+  "trigger": 6,
+  "label": "Bavla"
+}, {
+  "value": 27,
+  "trigger": 6,
+  "label": "Bharuch"
+}, {
+  "value": 28,
+  "trigger": 6,
+  "label": "Bhilad"
+}, {
+  "value": 29,
+  "trigger": 6,
+  "label": "Bhuj"
+}, {
+  "value": 30,
+  "trigger": 6,
+  "label": "Bilimora"
+}, {
+  "value": 31,
+  "trigger": 6,
+  "label": "Botad"
+}, {
+  "value": 32,
+  "trigger": 6,
+  "label": "Dabhoi"
+}, {
+  "value": 33,
+  "trigger": 6,
+  "label": "Dahod"
+}, {
+  "value": 34,
+  "trigger": 6,
+  "label": "Daman"
+}, {
+  "value": 35,
+  "trigger": 6,
+  "label": "Deesa"
+}, {
+  "value": 36,
+  "trigger": 6,
+  "label": "Dhoraji"
+}, {
+  "value": 37,
+  "trigger": 6,
+  "label": "Dwarka"
+}, {
+  "value": 38,
+  "trigger": 6,
+  "label": "Gandhidham"
+}, {
+  "value": 39,
+  "trigger": 6,
+  "label": "Godhra"
+}, {
+  "value": 40,
+  "trigger": 6,
+  "label": "Gondal"
+}, {
+  "value": 41,
+  "trigger": 6,
+  "label": "Halol"
+}, {
+  "value": 42,
+  "trigger": 6,
+  "label": "Hazira"
+}, {
+  "value": 43,
+  "trigger": 6,
+  "label": "Himmatnagar"
+}, {
+  "value": 44,
+  "trigger": 6,
+  "label": "Jamnagar"
+}, {
+  "value": 45,
+  "trigger": 6,
+  "label": "Jetpur"
+}, {
+  "value": 46,
+  "trigger": 6,
+  "label": "Junagadh"
+}, {
+  "value": 47,
+  "trigger": 6,
+  "label": "Kalol"
+}, {
+  "value": 48,
+  "trigger": 6,
+  "label": "Karjan"
+}, {
+  "value": 49,
+  "trigger": 6,
+  "label": "Keshod"
+}, {
+  "value": 50,
+  "trigger": 6,
+  "label": "Khambhat"
+}, {
+  "value": 51,
+  "trigger": 6,
+  "label": "Mahuva"
+}, {
+  "value": 52,
+  "trigger": 6,
+  "label": "Mandvi"
+}, {
+  "value": 53,
+  "trigger": 6,
+  "label": "Mehsana"
+}, {
+  "value": 54,
+  "trigger": 6,
+  "label": "Modasa"
+}, {
+  "value": 55,
+  "trigger": 6,
+  "label": "Morbi"
+}, {
+  "value": 56,
+  "trigger": 6,
+  "label": "Mundra"
+}, {
+  "value": 57,
+  "trigger": 6,
+  "label": "Nadiad"
+}, {
+  "value": 58,
+  "trigger": 6,
+  "label": "Navsari"
+}, {
+  "value": 59,
+  "trigger": 6,
+  "label": "Palanpur"
+}, {
+  "value": 60,
+  "trigger": 6,
+  "label": "Patan"
+}, {
+  "value": 61,
+  "trigger": 6,
+  "label": "Porbandar"
+}, {
+  "value": 62,
+  "trigger": 6,
+  "label": "Rajpipla"
+}, {
+  "value": 63,
+  "trigger": 6,
+  "label": "Rajula"
+}, {
+  "value": 64,
+  "trigger": 6,
+  "label": "Silvassa"
+}, {
+  "value": 65,
+  "trigger": 6,
+  "label": "Surendranagar"
+}, {
+  "value": 66,
+  "trigger": 6,
+  "label": "Umreth"
+}, {
+  "value": 67,
+  "trigger": 6,
+  "label": "Una"
+}, {
+  "value": 68,
+  "trigger": 6,
+  "label": "Unjha"
+}, {
+  "value": 69,
+  "trigger": 6,
+  "label": "Upleta"
+}, {
+  "value": 70,
+  "trigger": 6,
+  "label": "Vadnagar"
+}, {
+  "value": 71,
+  "trigger": 6,
+  "label": "Valsad"
+}, {
+  "value": 72,
+  "trigger": 6,
+  "label": "Vapi"
+}, {
+  "value": 73,
+  "trigger": 6,
+  "label": "Veraval"
+}, {
+  "value": 74,
+  "trigger": 6,
+  "label": "Vyara"
+}, {
+  "value": 75,
+  "trigger": 6,
+  "label": "Wankaner"
+}, {
+  "value": 76,
+  "trigger": 6,
+  "label": "Lucknow"
+}, {
+  "value": 77,
+  "trigger": 6,
+  "label": "Faridabad"
+}, {
+  "value": 78,
+  "trigger": 6,
+  "label": "Hathras"
+}, {
+  "value": 79,
+  "trigger": 6,
+  "label": "Bulandshahr"
+}, {
+  "value": 80,
+  "trigger": 6,
+  "label": "Mainpuri"
+}, {
+  "value": 81,
+  "trigger": 6,
+  "label": "Etawah"
+}, {
+  "value": 82,
+  "trigger": 6,
+  "label": "Kanpur"
+}, {
+  "value": 83,
+  "trigger": 6,
+  "label": "Farrukhabad"
+}, {
+  "value": 84,
+  "trigger": 6,
+  "label": "Kannauj"
+}, {
+  "value": 85,
+  "trigger": 6,
+  "label": "Unnao"
+}, {
+  "value": 86,
+  "trigger": 6,
+  "label": "Allahabad"
+}, {
+  "value": 87,
+  "trigger": 6,
+  "label": "Fatehpur"
+}, {
+  "value": 88,
+  "trigger": 6,
+  "label": "Varanasi"
+}, {
+  "value": 89,
+  "trigger": 6,
+  "label": "Bhadohi"
+}, {
+  "value": 90,
+  "trigger": 6,
+  "label": "Ballia"
+}, {
+  "value": 91,
+  "trigger": 6,
+  "label": "Jaunpur"
+}, {
+  "value": 92,
+  "trigger": 6,
+  "label": "Sultanpur"
+}, {
+  "value": 93,
+  "trigger": 6,
+  "label": "Faizabad"
+}, {
+  "value": 94,
+  "trigger": 6,
+  "label": "Barabanki"
+}, {
+  "value": 95,
+  "trigger": 6,
+  "label": "Amethi"
+}, {
+  "value": 96,
+  "trigger": 6,
+  "label": "Raebareli"
+}, {
+  "value": 97,
+  "trigger": 6,
+  "label": "Mirzapur"
+}, {
+  "value": 98,
+  "trigger": 6,
+  "label": "Renukoot"
+}, {
+  "value": 99,
+  "trigger": 6,
+  "label": "Shahjahanpur"
+}, {
+  "value": 100,
+  "trigger": 6,
+  "label": "Rampur"
+}]

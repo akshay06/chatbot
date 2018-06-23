@@ -6,9 +6,6 @@ import 'rxjs/add/observable/of'
 import { getFromCookie, getAccessToken } from './utils'
 import { Observable } from 'rxjs/Observable'
 import { getQueryParams, deleteToken, Dispatch } from './utils';
-import { set404, set500 } from './actions/ErrorAction';
-import { showToast } from './actions/ToastAction';
-import { showLoader, hideLoader } from './actions/LoaderAction';
 import { gtmPush } from './lib/pixels';
 import { apiUrl } from './lib/constants';
 
@@ -75,8 +72,6 @@ export const Api = {
       getObject.headers['Access-Token'] = getAccessToken()
     }
 
-    if(!params.ignoreLoader) showLoader('Loading.......');
-
     if (params.query) {
       getObject.query = getQueryParams(params.query)
       url = `${params.url}?${getObject.query}&dt=${dt}`
@@ -100,7 +95,6 @@ export const Api = {
     if (getAccessToken()) {
       postObject.headers['Access-Token'] = getAccessToken()
     }
-    showLoader('Loading.......');
     return ajax.post(apiUrl + `${params.url}`, params.postObj, postObject.headers)
       .map(response => handleResponse(response)).catch(error => handleError(error))
   },
@@ -117,7 +111,6 @@ export const Api = {
     if (getAccessToken()) {
       postObject.headers['Access-Token'] = getAccessToken()
     }
-    showLoader('Loading.......');
     return ajax.post(apiUrl + `${params.url}`, params.postObj, postObject.headers)
       .map(response => handleResponse(response)).catch(error => handleError(error))
   },
@@ -134,7 +127,6 @@ export const Api = {
     if (getAccessToken()) {
       postObject.headers['Access-Token'] = getAccessToken()
     }
-    showLoader('Loading.......');
     return ajax.post(apiUrl + `${params.url}`, params.postObj, postObject.headers)
       .map(response => handleResponse(response)).catch(error => handleError(error))
   }
@@ -145,50 +137,14 @@ const handleResponse = (response) => {
   if(response.response == null && response.status == 204) {
     throw response;  
   }
-  hideLoader();
-  if(response.response && response.response.clevertap_object && response.response.clevertap_object.ec == 'OrderInfo' ){ 
-    // Checkout Initiated Event fired when Charged clevertap object is coming from backend
-    // Charged event will be fired on the success page
-    if(typeof localStorage === 'object' && localStorage.clevertap_object && response.response.clevertap_object.pixel_data.order_event_name == 'Charged'){
-      try {
-        gtmPush(localStorage.clevertap_object);          
-      } catch (e) {
-        console.error('error', e)
-      }
-    }
-    if(typeof localStorage === 'object') {
-      try {
-        localStorage.clevertap_object = JSON.stringify(response.response.clevertap_object);
-      } catch (e) {
-        console.error('error', e)
-      }
-    }
-  }
-  else if(response.response && response.response.clevertap_object){
-    gtmPush(response.response.clevertap_object);
-    if(typeof localStorage === 'object') {
-      try {
-        localStorage.clevertap_object = undefined;
-      } catch (e) {
-        console.error('error', e)
-      }
-    }
-  }
-  if(response.response && response.response.error && response.response.error.code == 35 ) {
-    set404(true);
-  }
   return response.response
 }
 
 const handleError = (error) => {
   let tempError = {};
-  hideLoader();
+  
   if(error.status == 401){
     deleteToken();
-  }
-
-  if(error.status==500){
-    showToast('Something is not right!');
   }
 
   if(error.status == 204){
