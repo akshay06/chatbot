@@ -50,9 +50,11 @@ type deleteParams = {
 }
 
 const headerParams = {
-  'API-TOKEN': API_TOKEN,
-  'token': getFromCookie('token'),
-  'Content-Type': 'application/json',
+  // 'API-TOKEN': API_TOKEN,
+  // 'token': getFromCookie('token'),
+  // // 'Content-Type': 'application/json',
+  // 'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+
 }
 
 export const Api = {
@@ -61,25 +63,18 @@ export const Api = {
     var url;
     getObject = {
       method: 'GET',
-      responseType:params.responseType || 'json',
+      responseType: params.responseType || 'json',
       headers: {
-        ...params.headers,
-        'X-Http-Method-Override': 'GET',
-        ...headerParams
+        // ...params.headers,
+        // 'Access-Control-Request-Headers': 1
+        // 'X-Http-Method-Override': 'GET',
+        // ...headerParams
       },
     }
-    if (getAccessToken()) {
-      getObject.headers['Access-Token'] = getAccessToken()
-    }
 
-    if (params.query) {
-      getObject.query = getQueryParams(params.query)
-      url = `${params.url}?${getObject.query}&dt=${dt}`
-    } else {
-      url = params.url && params.url.indexOf("?") > -1 ? `${params.url}&dt=${dt}` : `${params.url}?dt=${dt}`
-    }
+    url = params.url;
 
-    return ajax({url:apiUrl + `${url}`, headers:getObject.headers, method:'get', responseType:getObject.responseType})
+    return ajax({url: url, crossDomain:true, headers:getObject.headers, method:'get'})
       .map(response => handleResponse(response)).catch(error => handleError(error))
   },
   post: (params: postParams) => {
@@ -95,7 +90,7 @@ export const Api = {
     if (getAccessToken()) {
       postObject.headers['Access-Token'] = getAccessToken()
     }
-    return ajax.post(apiUrl + `${params.url}`, params.postObj, postObject.headers)
+    return ajax.post(`${params.url}`, params.postObj, postObject.headers)
       .map(response => handleResponse(response)).catch(error => handleError(error))
   },
   patch: (params: patchParams) => {
@@ -134,6 +129,7 @@ export const Api = {
 }
 
 const handleResponse = (response) => {
+  console.log('called', response);
   if(response.response == null && response.status == 204) {
     throw response;  
   }

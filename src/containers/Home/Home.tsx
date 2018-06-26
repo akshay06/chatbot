@@ -2,7 +2,8 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { ThemeProvider } from 'styled-components';
 import ChatBot from 'react-simple-chatbot';
-import Review from './CitySelecter';
+import CitySelector from '../CitySelector/CitySelector';
+import Header from '../Header/Header';
 // all available props
 const theme = {
   background: '#f6f7f8',
@@ -19,17 +20,17 @@ const theme = {
 type Props = {
   dispatch: any,
   location: any,
-  commonReducer:any
 }
 type State = {
   userName: any,
-  steps: any
+  steps: any,
+  chatBotConfig: any
 }
 
 const homePageData = require('./home.json');
-class Home extends React.Component<Props, State> {
+class Home extends React.Component < Props, State > {
 
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       userName: '',
@@ -55,30 +56,74 @@ class Home extends React.Component<Props, State> {
         trigger: '6',
       }, {
         id: '6',
-        message: 'Hello {{previousValue}}, where do you want medicine delivery?',
+        message: 'Hello {previousValue}, where do you want medicine delivery?',
+        trigger: 'citySelector',
+      }, {
+        id: 'citySelector',
+        // asMessage: true,
+        component: < CitySelector /> ,
+        // trigger: '7',
+      }, {
+        id: 'autoLocation',
+        // asMessage: true,
+        component: < CitySelector /> ,
+        trigger: '7',
+      }, {
+        id: 'manualLocation',
+        // asMessage: true,
+        user: true,
         trigger: '7',
       }, {
         id: '7',
-        component: <Review />,
+        message: 'Hi {previousValue}',
         // trigger: '7',
-      }
-      ],
-
+      }],
+      chatBotConfig: {
+        // recognitionEnable: true,
+        style: {height: '100vh'},
+        avatarStyle: {
+          boxShadow: 'none'
+        },
+        userDelay: 0,
+        enableMobileAutoFocus: true,
+        bubbleStyle: {
+          // borderRadius: '12px 12px 12px 0',
+          boxShadow: '0 1px 12px 0 rgba(181, 192, 204, 0.5)',
+          fontSize: '16px',
+          marginTop: 0
+        },
+        submitButtonStyle: {
+          background: '#abaebf',
+          borderRadius: '50%',
+          width: '36px',
+          height: '36px',
+          padding: '0 7px 0 11px',
+          display: 'flex',
+          fill: 'white',
+          top: '8px',
+          right: '8px',
+        },
+        headerComponent: Header(),
+        botAvatar: 'https://image.ibb.co/mq0NPo/Screen_Shot_2018_06_22_at_1_13_28_AM.png',
+        userAvatar: 'https://image.ibb.co/ieJOEo/Screen_Shot_2018_06_22_at_1_40_39_AM.png'
+      },
     };
   }
   componentWillMount() {
-    const {steps, userName} = this.state;
-    
-    this.setState({ userName });
+    console.log('called in will mount', this.state);
+    // this.setState({ userName });
   }
   render() {
-    const {steps} = this.state;
-    const {commonReducer: {chatBot: chatBotConfig}} = this.props;
+    const {
+      steps,
+      chatBotConfig
+    } = this.state;
     console.log('this.state', this.state);
-    return (<>
-    <ThemeProvider theme={theme}>
-      <ChatBot {...chatBotConfig} {...{steps}}  />
-    </ThemeProvider>
+    return ( 
+    <>
+      <ThemeProvider theme = {theme} >
+        <ChatBot { ...{ steps } } { ...chatBotConfig} />
+      </ThemeProvider>
     </>)
   }
 }
