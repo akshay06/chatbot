@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import ChatBot from 'react-simple-chatbot';
 import CitySelector from '../CitySelector/CitySelector';
 import Header from '../Header/Header';
+import ImageUplaoder from '../ImageUplaoder/ImageUplaoder';
 // all available props
 const theme = {
   background: '#f6f7f8',
@@ -20,6 +21,7 @@ const theme = {
 type Props = {
   dispatch: any,
   location: any,
+  commonReduder: any
 }
 type State = {
   userName: any,
@@ -32,9 +34,11 @@ class Home extends React.Component < Props, State > {
 
   constructor(props) {
     super(props)
+
     this.state = {
       userName: '',
-      steps: [{
+      steps: [
+        {
         id: '1',
         message: 'Hello, My name is Health Ginie.',
         trigger: '2',
@@ -57,30 +61,126 @@ class Home extends React.Component < Props, State > {
       }, {
         id: '6',
         message: 'Hello {previousValue}, where do you want medicine delivery?',
-        trigger: 'citySelector',
+        trigger: 'locationOption',
+      },
+      {
+        id: 'locationOption',
+        options: [
+          {value: 'PICK MY CURRENT LOCATION', label: 'PICK MY CURRENT LOCATION', trigger: 'citySelector'},
+        {value: 'ENTER YOUR LOCATION MANUALLY', label: 'ENTER YOUR LOCATION MANUALLY', trigger: 'manualLocation'}]
       }, {
         id: 'citySelector',
-        // asMessage: true,
+        // replace: true,
         component: < CitySelector /> ,
-        // trigger: '7',
-      }, {
-        id: 'autoLocation',
-        // asMessage: true,
-        component: < CitySelector /> ,
-        trigger: '7',
       }, {
         id: 'manualLocation',
-        // asMessage: true,
         user: true,
+        // trigger: 'google-search',
         trigger: '7',
+      // }, {
+      //   id: 'google-search',
+      //   component: < AutoFillLocation /> ,
       }, {
         id: '7',
-        message: 'Hi {previousValue}',
-        // trigger: '7',
+        message: 'Deliver at {previousValue}',
+        trigger: '8',
+      }, {
+        id: '8',
+        options: [
+          { value: 'confirm', label: 'CONFIRM', trigger: '9' },
+          { value: 'edit', label: 'EDIT', trigger: 'locationOption' },
+        ],
+      }, {
+        id: '9',
+        message: 'Place a medicine order now and get 25% off in our first order.',
+        trigger: '10'
+      }, {
+        id: '10',
+        message: 'Order now to get medicines delivered by tomorrow 27th June.',
+        trigger: '11'
+      }, {
+        id: '11',
+        message: 'Upload a valid prescription to place a medicine order. Or you can also Book free doctor tele-consultation if you require a new prescription.',
+        trigger: '12'
+      }, {
+        id: '12',
+        component: (<div><img src={require('images/valid-rx.png')} alt=""/></div>),
+        trigger: '13'
+      }, {
+        id: '13',
+        message: 'Do you have a Valid Prescription ?',
+        trigger: '14'
+      }, {
+        id: '14',
+        options: [
+          { value: 'prescription', label: 'Yes', trigger: 'uploadRx' },
+          { value: 'docConsultation', label: 'No', trigger: '15' },
+        ]
+      }, {
+        id: 'uploadRx',
+        component: <ImageUplaoder />,
+      }, {
+        id: '15',
+        message: 'We also provide doctor consultation, have a look',
+        trigger: '16'
+      }, {
+        id: '16',
+        component: (<div><img src={require('images/doctor-consultation.png')} alt=""/></div>),
+        trigger: '17'
+      }, {
+        id: '17',
+        message: 'Do you want to BOOK FREE DOCTOR CONSULTATION ?',
+        trigger: 'docConsultation'
+      }, {
+        id: 'docConsultation',
+        options: [
+          { value: 'yes', label: 'Yes', trigger: 'bookDoctorCons' },
+          { value: 'no', label: 'No', trigger: '18' },
+        ],
+      }, {
+        id: '18',
+        message: 'Thanks for interaction!! Have a great day!',
+        end: true
+      }, {
+        id: 'bookDoctorCons',
+        message: 'Wait a minute, I will do that for you',
+        trigger: '19'
+      }, {
+        id: '19',
+        message: 'Please enter your mobile no.',
+        trigger: 'mobile-number',
+      }, {
+        id: 'mobile-number',
+        user: true,
+        validator: (value) => {
+          var phoneno = /^\(?([5-9]{1})\)?([0-9]{9})$/;
+          if(value.match(phoneno)) {
+            return true;
+          } else {
+            return `Please enter a valid no`;
+          }
+        },
+        trigger: '20',
+      }, {
+        id: '20',
+        message: 'Please enter complete address',
+        trigger: 'address',
+      }, {
+        id: 'address',
+        user: true,
+        trigger: '21',
+      }, {
+        id: '21',
+        message: 'Placing your order.',
+        trigger: '22',
+      }, {
+        id: '22',
+        message: 'Thanks for interaction!! Have a great day!',
+        end: true
       }],
       chatBotConfig: {
         // recognitionEnable: true,
-        style: {height: '100vh'},
+        // style: {height: '100vh'},
         avatarStyle: {
           boxShadow: 'none'
         },
@@ -110,19 +210,20 @@ class Home extends React.Component < Props, State > {
     };
   }
   componentWillMount() {
-    console.log('called in will mount', this.state);
     // this.setState({ userName });
+  }
+  handleEnd = (val) => {
+    console.log('called in handle', val);
   }
   render() {
     const {
       steps,
       chatBotConfig
     } = this.state;
-    console.log('this.state', this.state);
     return ( 
     <>
       <ThemeProvider theme = {theme} >
-        <ChatBot { ...{ steps } } { ...chatBotConfig} />
+        <ChatBot handleEnd={this.handleEnd} { ...{ steps } } { ...chatBotConfig} />
       </ThemeProvider>
     </>)
   }

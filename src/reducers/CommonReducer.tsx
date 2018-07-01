@@ -3,9 +3,10 @@ import { UPDATE_COMMON, GET_LOCATION_FULFILLED } from '../actions/CommonAction'
 declare let window: any;
 
 export let initialState = {
+  geoLocation: undefined,
   userForm: {
-    name: ''
-  }
+    name: undefined,
+  },
 }
 
 export const CommonReducer = (state = initialState, action) => {
@@ -16,9 +17,9 @@ export const CommonReducer = (state = initialState, action) => {
         ...action.payload
       }
     case GET_LOCATION_FULFILLED:
-      console.log('action.payload', action.payload);
       return {
-        ...state,        
+        ...state, 
+        geoLocation: action.payload.results
       }
     // case '@@router/LOCATION_CHANGE':
     //   if (typeof window !== 'undefined') {

@@ -102,6 +102,9 @@ module.exports = {
     },
     // devtool: "source-map",
     resolve: {
+        alias: {
+        images: path.resolve(__dirname, 'src/images'),
+        },
         extensions: [".ts", ".tsx", ".js", ".json", ".scss"]
     },
 
