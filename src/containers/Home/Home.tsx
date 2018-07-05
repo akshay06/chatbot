@@ -2,9 +2,9 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { ThemeProvider } from 'styled-components';
 import ChatBot from 'react-simple-chatbot';
-import CitySelector from '../CitySelector/CitySelector';
 import Header from '../Header/Header';
-import ImageUplaoder from '../ImageUplaoder/ImageUplaoder';
+import ParentComponent from '../ParentComponent/ParentComponent';
+
 // all available props
 const theme = {
   background: '#f6f7f8',
@@ -24,19 +24,16 @@ type Props = {
   commonReduder: any
 }
 type State = {
-  userName: any,
   steps: any,
   chatBotConfig: any
 }
 
-const homePageData = require('./home.json');
 class Home extends React.Component < Props, State > {
 
   constructor(props) {
     super(props)
 
     this.state = {
-      userName: '',
       steps: [
         {
         id: '1',
@@ -70,16 +67,10 @@ class Home extends React.Component < Props, State > {
         {value: 'ENTER YOUR LOCATION MANUALLY', label: 'ENTER YOUR LOCATION MANUALLY', trigger: 'manualLocation'}]
       }, {
         id: 'citySelector',
-        // replace: true,
-        component: < CitySelector /> ,
+        component: <ParentComponent component="AutoFillLocation" /> ,
       }, {
         id: 'manualLocation',
-        user: true,
-        // trigger: 'google-search',
-        trigger: '7',
-      // }, {
-      //   id: 'google-search',
-      //   component: < AutoFillLocation /> ,
+        component: (<ParentComponent component="ManualInput"/>) ,
       }, {
         id: '7',
         message: 'Deliver at {previousValue}',
@@ -93,7 +84,8 @@ class Home extends React.Component < Props, State > {
       }, {
         id: '9',
         message: 'Place a medicine order now and get 25% off in our first order.',
-        trigger: '10'
+        trigger: '10',
+        end: true
       }, {
         id: '10',
         message: 'Order now to get medicines delivered by tomorrow 27th June.',
@@ -118,7 +110,7 @@ class Home extends React.Component < Props, State > {
         ]
       }, {
         id: 'uploadRx',
-        component: <ImageUplaoder />,
+        component: (<ParentComponent component="ImageUplaoder"/>)
       }, {
         id: '15',
         message: 'We also provide doctor consultation, have a look',

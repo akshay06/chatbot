@@ -46,6 +46,7 @@ class ImageUplaoder extends React.Component<Props, State> {
         })(f);
         // Read in the image file as a data URL.
         reader.readAsDataURL(f);
+        console.log('called in image upload', files);
         this.trigger(files)
     }
   }
