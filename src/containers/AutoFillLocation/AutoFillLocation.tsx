@@ -51,7 +51,7 @@ class AutoFillLocation extends React.Component<Props, State> {
 
   render() {
     return (
-      <div style={{ width: '100%' }}>Getting your location, please wait...</div>
+      <div ref="autoFillLocation" style={{ width: '100%' }}>Getting your location, please wait...</div>
     );
   }
 }

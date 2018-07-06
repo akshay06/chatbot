@@ -35,38 +35,38 @@ class Home extends React.Component < Props, State > {
 
     this.state = {
       steps: [
-        {
-        id: '1',
-        message: 'Hello, My name is Health Ginie.',
-        trigger: '2',
-      }, {
-        id: '2',
-        message: 'Welcome to PharmEasy, India\'s Medicine Home delivery company. Order medicines and get upto 20% discount on every medicine order.',
-        trigger: '3',
-      }, {
-        id: '3',
-        message: 'I\'m easy to use. You\'ll see some options in a moment, just make a selection and we\'ll get started. If you ever get stuck, just ask me for help.',
-        trigger: '4',
-      }, {
-        id: '4',
-        message: 'Your name please',
-        trigger: 'userName',
-      }, {
-        id: 'userName',
-        user: true,
-        trigger: '6',
-      }, {
-        id: '6',
-        message: 'Hello {previousValue}, where do you want medicine delivery?',
-        trigger: 'locationOption',
-      },
+      //   {
+      //   id: '1',
+      //   message: 'Hello, My name is Health Ginie.',
+      //   trigger: '2',
+      // }, {
+      //   id: '2',
+      //   message: 'Welcome to PharmEasy, India\'s Medicine Home delivery company. Order medicines and get upto 20% discount on every medicine order.',
+      //   trigger: '3',
+      // }, {
+      //   id: '3',
+      //   message: 'I\'m easy to use. You\'ll see some options in a moment, just make a selection and we\'ll get started. If you ever get stuck, just ask me for help.',
+      //   trigger: '4',
+      // }, {
+      //   id: '4',
+      //   message: 'Your name please',
+      //   trigger: 'userName',
+      // }, {
+      //   id: 'userName',
+      //   user: true,
+      //   trigger: '6',
+      // }, {
+      //   id: '6',
+      //   message: 'Hello {previousValue}, where do you want medicine delivery?',
+      //   trigger: 'locationOption',
+      // },
       {
         id: 'locationOption',
         options: [
-          {value: 'PICK MY CURRENT LOCATION', label: 'PICK MY CURRENT LOCATION', trigger: 'citySelector'},
-        {value: 'ENTER YOUR LOCATION MANUALLY', label: 'ENTER YOUR LOCATION MANUALLY', trigger: 'manualLocation'}]
+          {value: 'PICK MY CURRENT LOCATION', label: 'PICK MY CURRENT LOCATION', trigger: 'autoFillLocation'},
+          {value: 'ENTER YOUR LOCATION MANUALLY', label: 'ENTER YOUR LOCATION MANUALLY', trigger: 'manualLocation'}]
       }, {
-        id: 'citySelector',
+        id: 'autoFillLocation',
         component: <ParentComponent component="AutoFillLocation" /> ,
       }, {
         id: 'manualLocation',
