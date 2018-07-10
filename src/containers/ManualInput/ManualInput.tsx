@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { getLocation, updateCommon } from '../../actions/CommonAction';
+import * as styles from './ManualInput.scss'
 
 type Props = {
   dispatch: any,
@@ -31,30 +32,28 @@ class ManualInput extends React.Component<Props, State> {
     super(props)
     this.state = {}
   }
+  componentWillMount() {
+    let child1 = document.getElementById('locationField');
+    if(child1) {
+      child1.remove()
+    }
+  }
   componentDidMount() {
-    console.log('did mount called');    
     this.initAutocomplete()
   }
-  componentWillUnmount() {
-    console.log('unmount called');
+  trigger = (value) => {
+    this.props.triggerNextStep({trigger:'7', value})
   }
-  trigger = () => {
-    console.log('called');
-    this.props.triggerNextStep({trigger:'7'})
-  }
-  
-  componentWillReceiveProps(nextProps) {
-    console.log('willrecieveprosp');    
-  }
-      
 
   initAutocomplete = () => {
     // Create the autocomplete object, restricting the search to geographical
     // location types.
     autocomplete = new google.maps.places.Autocomplete(
-        /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
-        {types: ['geocode']});
-
+      /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+      {types: ['geocode'], componentRestrictions: {country: 'IND' }}
+    );
+    // autocomplete.setFields(
+    //         ['address_components', '']);
     // When the user selects an address from the dropdown, populate the address
     // fields in the form.
     autocomplete.addListener('place_changed', this.fillInAddress);
@@ -63,32 +62,14 @@ class ManualInput extends React.Component<Props, State> {
   fillInAddress = () => {
     // Get the place details from the autocomplete object.
     var place = autocomplete.getPlace();
-    console.log('called', place);
-    this.trigger();
-  }
-
-  geolocate = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var geolocation = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-        var circle = new google.maps.Circle({
-          center: geolocation,
-          radius: position.coords.accuracy
-        });
-        autocomplete.setBounds(circle.getBounds());
-      });
-    }
+    this.trigger(place.formatted_address);
   }
 
   render() {
     return (
       <>
         <div id="locationField">
-          <input id="autocomplete" placeholder="Enter your address"
-            onFocus={this.geolocate} type="text"></input>
+          <input id="autocomplete" placeholder="Start typing address" type="text"></input>
         </div>
       </>
     );

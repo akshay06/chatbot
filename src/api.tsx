@@ -49,14 +49,6 @@ type deleteParams = {
   headers?: any
 }
 
-const headerParams = {
-  // 'API-TOKEN': API_TOKEN,
-  // 'token': getFromCookie('token'),
-  // // 'Content-Type': 'application/json',
-  // 'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
-
-}
-
 export const Api = {
   get: (params: getParams) => {
     var getObject;
@@ -64,34 +56,23 @@ export const Api = {
     getObject = {
       method: 'GET',
       responseType: params.responseType || 'json',
-      headers: {
-        // ...params.headers,
-        // 'Access-Control-Request-Headers': 1
-        // 'X-Http-Method-Override': 'GET',
-        // ...headerParams
-      },
+      
     }
 
     url = params.url;
 
-    return ajax({url: url, crossDomain:true, headers:getObject.headers, method:'get'})
+    return ajax({url: url, crossDomain:true, method:'get'})
       .map(response => handleResponse(response)).catch(error => handleError(error))
   },
   post: (params: postParams) => {
-    var postObject = {
-      method: 'POST',
-      headers: {
-        ...params.headers,
-        'X-Http-Method-Override': 'POST',
-        ...headerParams
-      },
-      postObj: params.postObj
+    let headers = {
+      // ...params.headers,
+      // 'Access-Control-Request-Headers': 1
+      // 'X-Http-Method-Override': 'GET',
+      'content-type': 'application/json'
     }
-    if (getAccessToken()) {
-      postObject.headers['Access-Token'] = getAccessToken()
-    }
-    return ajax.post(`${params.url}`, params.postObj, postObject.headers)
-      .map(response => handleResponse(response)).catch(error => handleError(error))
+    return ajax({url: params.url, body: JSON.stringify(params.postObj), crossDomain:true, method:'post', headers})
+    .map(response => handleResponse(response)).catch(error => handleError(error))
   },
   patch: (params: patchParams) => {
     var postObject = {
@@ -99,7 +80,6 @@ export const Api = {
       headers: {
         ...params.headers,
         'X-Http-Method-Override': 'PATCH',
-        ...headerParams
       },
       postObj: params.postObj
     }
@@ -115,7 +95,6 @@ export const Api = {
       headers: {
         ...params.headers,
         'X-Http-Method-Override': 'DELETE',
-        ...headerParams
       },
       postObj: params.postObj
     }

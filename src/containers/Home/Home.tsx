@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import ChatBot from 'react-simple-chatbot';
 import Header from '../Header/Header';
 import ParentComponent from '../ParentComponent/ParentComponent';
+import { submitForm } from '../../actions/CommonAction';
 
 // all available props
 const theme = {
@@ -12,8 +13,8 @@ const theme = {
   // headerBgColor: '#EF6C00',
   // headerFontColor: '#fff',
   // headerFontSize: '15px',
-  botBubbleColor: '#fff',
   botFontColor: '#20222b',
+  botBubbleColor: '#fff',
   userBubbleColor: '#0f906d',
   userFontColor: 'white',
 };
@@ -35,31 +36,31 @@ class Home extends React.Component < Props, State > {
 
     this.state = {
       steps: [
-      //   {
-      //   id: '1',
-      //   message: 'Hello, My name is Health Ginie.',
-      //   trigger: '2',
-      // }, {
-      //   id: '2',
-      //   message: 'Welcome to PharmEasy, India\'s Medicine Home delivery company. Order medicines and get upto 20% discount on every medicine order.',
-      //   trigger: '3',
-      // }, {
-      //   id: '3',
-      //   message: 'I\'m easy to use. You\'ll see some options in a moment, just make a selection and we\'ll get started. If you ever get stuck, just ask me for help.',
-      //   trigger: '4',
-      // }, {
-      //   id: '4',
-      //   message: 'Your name please',
-      //   trigger: 'userName',
-      // }, {
-      //   id: 'userName',
-      //   user: true,
-      //   trigger: '6',
-      // }, {
-      //   id: '6',
-      //   message: 'Hello {previousValue}, where do you want medicine delivery?',
-      //   trigger: 'locationOption',
-      // },
+        {
+        id: '1',
+        message: 'Hello, My name is Health Ginie.',
+        trigger: '2',
+      }, {
+        id: '2',
+        message: 'Welcome to PharmEasy, India\'s Medicine Home delivery company. Order medicines and get upto 20% discount on every medicine order.',
+        trigger: '3',
+      }, {
+        id: '3',
+        message: 'I\'m easy to use. You\'ll see some options in a moment, just make a selection and we\'ll get started. If you ever get stuck, just ask me for help.',
+        trigger: '4',
+      }, {
+        id: '4',
+        message: 'Your name please',
+        trigger: 'userName',
+      }, {
+        id: 'userName',
+        user: true,
+        trigger: '6',
+      }, {
+        id: '6',
+        message: 'Hello {previousValue}, where do you want medicine delivery?',
+        trigger: 'locationOption',
+      },
       {
         id: 'locationOption',
         options: [
@@ -76,6 +77,10 @@ class Home extends React.Component < Props, State > {
         message: 'Deliver at {previousValue}',
         trigger: '8',
       }, {
+        id: 'cant-find-location',
+        message: 'Unable to locate you, due to {previousValue}. Please enter manually',
+        trigger: 'locationOption',
+      }, {
         id: '8',
         options: [
           { value: 'confirm', label: 'CONFIRM', trigger: '9' },
@@ -85,7 +90,6 @@ class Home extends React.Component < Props, State > {
         id: '9',
         message: 'Place a medicine order now and get 25% off in our first order.',
         trigger: '10',
-        end: true
       }, {
         id: '10',
         message: 'Order now to get medicines delivered by tomorrow 27th June.',
@@ -96,13 +100,15 @@ class Home extends React.Component < Props, State > {
         trigger: '12'
       }, {
         id: '12',
-        component: (<div><img src={require('images/valid-rx.png')} alt=""/></div>),
+        asMessage: true,
+        component: (<div><img width="100%" src={'https://s3-ap-southeast-1.amazonaws.com/pe-s3-order-on-chat-staging/valid-rx.png'} alt=""/></div>),
         trigger: '13'
       }, {
         id: '13',
         message: 'Do you have a Valid Prescription ?',
         trigger: '14'
-      }, {
+      }, 
+      {
         id: '14',
         options: [
           { value: 'prescription', label: 'Yes', trigger: 'uploadRx' },
@@ -117,7 +123,8 @@ class Home extends React.Component < Props, State > {
         trigger: '16'
       }, {
         id: '16',
-        component: (<div><img src={require('images/doctor-consultation.png')} alt=""/></div>),
+        asMessage: true,
+        component: (<div><img width="100%" src={'https://s3-ap-southeast-1.amazonaws.com/pe-s3-order-on-chat-staging/doctor-consultation.png'} alt=""/></div>),
         trigger: '17'
       }, {
         id: '17',
@@ -140,7 +147,7 @@ class Home extends React.Component < Props, State > {
       }, {
         id: '19',
         message: 'Please enter your mobile no.',
-        trigger: 'mobile-number',
+        trigger: 'mobile-number',        
       }, {
         id: 'mobile-number',
         user: true,
@@ -178,14 +185,24 @@ class Home extends React.Component < Props, State > {
         },
         userDelay: 0,
         enableMobileAutoFocus: true,
+        bubbleOptionStyle: {
+          marginLeft: '50px',
+          borderRadius: '6px',
+          color: '#fff',
+          background: '#3f906d',
+        },
         bubbleStyle: {
           // borderRadius: '12px 12px 12px 0',
           boxShadow: '0 1px 12px 0 rgba(181, 192, 204, 0.5)',
           fontSize: '16px',
-          marginTop: 0
+          marginTop: 0,
+          maxWidth: '70%'
+        },
+        contentStyle: {
+          height: 'calc(100vh - 139px)'
         },
         submitButtonStyle: {
-          background: '#abaebf',
+          background: '#3f906d',
           borderRadius: '50%',
           width: '36px',
           height: '36px',
@@ -205,7 +222,28 @@ class Home extends React.Component < Props, State > {
     // this.setState({ userName });
   }
   handleEnd = (val) => {
-    console.log('called in handle', val);
+    let orderType = '';
+    if(val.renderedSteps.find(step => step.id == 'uploadRx')) {
+      orderType =  'prescription';
+    }
+    if(val.renderedSteps.find(step => step.id == 'bookDoctorCons')) {
+      orderType =  'doctor consultation';
+    }
+    let userDetails = {
+      name: val.renderedSteps.find(step => step.id == 'userName').value,
+      attachments: val.renderedSteps.find(step => step.id == 'uploadRx').value,
+      mobile: val.renderedSteps.find(step => step.id == 'mobile-number').value,
+      address: val.renderedSteps.find(step => step.id == 'address').value,
+      orderType,
+    };
+    let formData = {
+      DeliveryStreamName: "pe-kinesis-order-on-chat",
+      Record: {
+        Data: userDetails
+      }
+    }
+    console.log('called in handle', formData);
+    this.props.dispatch(submitForm(formData))
   }
   render() {
     const {

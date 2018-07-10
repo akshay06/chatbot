@@ -24,34 +24,43 @@ class AutoFillLocation extends React.Component<Props, State> {
     super(props)
     this.state = {userName: '', date : new Date()}
   }
+  componentWillMount() {
+    let child1 = document.getElementById('autoFillLocation');
+    if(child1) {
+      child1.remove()
+    }
+  }
   componentDidMount() {
     this.props.dispatch(updateCommon({geoLocation: undefined}));
     this.mapFunction()
   }
   mapFunction = () => {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(this.showPosition);
+        navigator.geolocation.getCurrentPosition(this.showPosition, this.error);
     } else { 
         console.log('Geolocation is not supported by this browser.');
+        this.trigger('Geolocation is not supported by this browser.');
     }
   }
   showPosition = (position) => {
     this.props.dispatch(getLocation(position.coords));    
   }
-  trigger = () => {
-    this.props.triggerNextStep({trigger:'manualLocation'})
+  error = (error) => {
+    this.trigger(error.message);
+  }
+  trigger = (value) => {
+    this.props.triggerNextStep({trigger:'cant-find-location', value})
   }
   
   componentWillReceiveProps(nextProps) {
     if(nextProps.commonReducer.geoLocation && JSON.stringify(this.props.commonReducer.geoLocation) !== JSON.stringify(nextProps.commonReducer.geoLocation)) {
-      console.log('will recieve if', this.state.date, nextProps.commonReducer.geoLocation[0].formatted_address);
       this.props.triggerNextStep({trigger:'7', value: nextProps.commonReducer.geoLocation[0].formatted_address})      
     }
   }
 
   render() {
     return (
-      <div ref="autoFillLocation" style={{ width: '100%' }}>Getting your location, please wait...</div>
+      <div id="autoFillLocation" style={{ width: '100%' }}>Getting your location, please wait...</div>
     );
   }
 }

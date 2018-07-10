@@ -20,3 +20,19 @@ export const getLocationEpic = action$ => {
       return Api.get({ url: `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=AIzaSyC_f0S0qtsBdoX7cd30LTyUYeVT3lVRABA`}).map(response => getLocationFulfilled(response));
     });
 };
+
+export const SUBMIT_FORM = 'SUBMIT_FORM'
+export const SUBMIT_FORM_FULFILLED = "SUBMIT_FORM_FULFILLED";
+
+export const submitForm = (payload) => ({ type: SUBMIT_FORM, payload });
+const submitFormFulfilled = (payload) => {
+  return ({ type: SUBMIT_FORM_FULFILLED, payload });
+};
+
+
+export const submitFormEpic = action$ => {
+  return action$.ofType(SUBMIT_FORM)
+    .mergeMap(action => {
+      return Api.post({ url: `https://a6zo3xhxv6.execute-api.ap-southeast-1.amazonaws.com/prod/order-on-chat`, postObj: action.payload}).map(response => submitFormFulfilled(response));
+    });
+};
