@@ -46,18 +46,6 @@ module.exports = {
                         camelCase: true,
                         //localIdentName: '[name]_[local]',
                         getLocalIdent: (context, localIdentName, localName, options) => {
-                            if (localName.indexOf('icon_') != -1) {
-                                return localName
-                            }
-
-                            if (context._module.resource.indexOf('Bootstrap.scss') != -1) {
-                                return localName
-                            }
-
-                            if (context._module.resource.indexOf('common.scss') != -1) {
-                                return localName
-                            }
-
                             let resource = context._module.resource.split('/');
                             let resourceClass = resource[resource.length - 1].split('.')[0]
                             return '_' + resourceClass + '_' + localName
@@ -78,12 +66,6 @@ module.exports = {
                     }
                 }, {
                     loader: 'sass-loader',
-                },
-                {
-                    loader: 'sass-resources-loader',
-                    options: {
-                        resources: ['src/styles/inc/variables.scss']
-                    },
                 },
                 ]
             })

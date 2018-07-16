@@ -101,15 +101,7 @@ module.exports = {
                         camelCase: true,
                         //localIdentName: '[hash:base64:6]',
                         getLocalIdent: (context, localIdentName, localName, options) => {
-                            if (localName.indexOf('icon_') != -1) {
-                                return localName
-                            } else if (context._module.resource.indexOf('Bootstrap.scss') != -1) {
-                                return localName
-                            } else if (context._module.resource.indexOf('common.scss') != -1) {
-                                return localName
-                            } else {
-                                return '_' + className.get(localName + context._module.resource);
-                            }
+                            return '_' + className.get(localName + context._module.resource);
                         },
                         minimize: true,
                         namedExport: true,

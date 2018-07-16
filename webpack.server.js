@@ -57,18 +57,7 @@ module.exports = {
                         namedExport: true,
                         sass: true,
                         getLocalIdent: (context, localIdentName, localName, options) => {
-                            if (localName.indexOf('icon_') != -1) {
-                                return localName
-                            }
-
-                            if (context._module.resource.indexOf('Bootstrap.scss') != -1) {
-                                return localName
-                            }
-
-                            if (context._module.resource.indexOf('common.scss') != -1) {
-                                return localName
-                            }
-
+                            
                             return '_' + classNames[localName + context._module.resource];
                         },
                     },
