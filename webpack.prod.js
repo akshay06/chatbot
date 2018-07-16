@@ -155,8 +155,8 @@ module.exports = {
         //     /css\.d\.ts$/
         // ]),
         new CleanWebpackPlugin(['tmp_dist']),
-        new CopyWebpackPlugin([{ from: path.join(__dirname, 'assets'), to: path.join(__dirname, 'tmp_dist/assets') },
-        { from: path.join(__dirname, 'assets/root'), to: path.join(__dirname, 'tmp_dist') }]),
+        // new CopyWebpackPlugin([{ from: path.join(__dirname, 'assets'), to: path.join(__dirname, 'tmp_dist/assets') },
+        // { from: path.join(__dirname, 'assets/root'), to: path.join(__dirname, 'tmp_dist') }]),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
         new SimpleProgressPlugin(),

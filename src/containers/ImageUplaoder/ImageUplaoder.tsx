@@ -62,7 +62,7 @@ class ImageUplaoder extends React.Component<Props, State> {
       <div id="ImageUplaoder" style={{ width: '100%', position: 'relative' }}>
         <input accept="image/*" name="file" multiple type="file" onChange={this.onImageChange} className={styles.imageUploadBtn} id="group_image"/>
         <label htmlFor="group_image" className={styles.customFileUpload}>
-          <img width={20} style={{marginRight: '15px'}} src={require('images/upload-icon.png')} />
+          <img width={20} style={{marginRight: '15px'}} src="https://s3-ap-southeast-1.amazonaws.com/pe-s3-order-on-chat-staging/upload-icon.png" />
           <span>Click here to Upload <br/>(multiple select)</span>
         </label>
         <div id='previewImg'></div>
