@@ -49,12 +49,12 @@ class AutoFillLocation extends React.Component<Props, State> {
     this.trigger(error.message);
   }
   trigger = (value) => {
-    this.props.triggerNextStep({trigger:'cant-find-location', value})
+    this.props.triggerNextStep({trigger:'7', value})
   }
   
   componentWillReceiveProps(nextProps) {
     if(nextProps.commonReducer.geoLocation && JSON.stringify(this.props.commonReducer.geoLocation) !== JSON.stringify(nextProps.commonReducer.geoLocation)) {
-      this.props.triggerNextStep({trigger:'7', value: nextProps.commonReducer.geoLocation[0].formatted_address})      
+      this.props.triggerNextStep({trigger:'user-location', value: nextProps.commonReducer.geoLocation[0].formatted_address})      
     }
   }
 

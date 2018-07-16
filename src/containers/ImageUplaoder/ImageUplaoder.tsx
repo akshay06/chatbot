@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { getLocation, updateCommon } from '../../actions/CommonAction';
-
+import * as styles from "./ImageUplaoder.scss";
 type Props = {
   dispatch: any,
   steps: any,
@@ -50,7 +49,7 @@ class ImageUplaoder extends React.Component<Props, State> {
   }
   trigger = (files, images) => {
     // console.log('alal', files, images);
-    this.props.triggerNextStep({trigger: '19', value: images})
+    this.props.triggerNextStep({trigger: '17', value: images})
   }
   
   componentWillReceiveProps(nextProps) {
@@ -61,8 +60,11 @@ class ImageUplaoder extends React.Component<Props, State> {
     // const style = {opacity: '0'}
     return (
       <div id="ImageUplaoder" style={{ width: '100%', position: 'relative' }}>
-        <input accept="image/*" name="file" multiple type="file" onChange={this.onImageChange} className="filetype" id="group_image"/>
-        {/* <label htmlFor="file">Click Here to upload</label> */}
+        <input accept="image/*" name="file" multiple type="file" onChange={this.onImageChange} className={styles.imageUploadBtn} id="group_image"/>
+        <label htmlFor="group_image" className={styles.customFileUpload}>
+          <img width={20} style={{marginRight: '15px'}} src={require('images/upload-icon.png')} />
+          <span>Click here to Upload <br/>(multiple select)</span>
+        </label>
         <div id='previewImg'></div>
       </div>
     );

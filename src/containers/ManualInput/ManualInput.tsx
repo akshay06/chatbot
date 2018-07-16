@@ -1,7 +1,5 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { getLocation, updateCommon } from '../../actions/CommonAction';
-import * as styles from './ManualInput.scss'
 
 type Props = {
   dispatch: any,
@@ -42,7 +40,8 @@ class ManualInput extends React.Component<Props, State> {
     this.initAutocomplete()
   }
   trigger = (value) => {
-    this.props.triggerNextStep({trigger:'7', value})
+    document.getElementById('locationField').style.height = '40px';
+    this.props.triggerNextStep({trigger:'user-location', value})
   }
 
   initAutocomplete = () => {
@@ -68,8 +67,8 @@ class ManualInput extends React.Component<Props, State> {
   render() {
     return (
       <>
-        <div id="locationField">
-          <input id="autocomplete" placeholder="Start typing address" type="text"></input>
+        <div style={{height: '200px'}} id="locationField">
+          <input id="autocomplete" autoFocus placeholder="Start typing address" type="text"></input>
         </div>
       </>
     );

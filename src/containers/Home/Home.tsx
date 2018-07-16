@@ -38,34 +38,30 @@ class Home extends React.Component < Props, State > {
       steps: [
         {
         id: '1',
-        message: 'Hello, My name is Health Ginie.',
+        message: 'Hello, Welcome to PharmEasy! India\'s most trusted Medicine Home delivery company.',
         trigger: '2',
       }, {
         id: '2',
-        message: 'Welcome to PharmEasy, India\'s Medicine Home delivery company. Order medicines and get upto 20% discount on every medicine order.',
+        message: 'Order medicines and get 25% off on your first medicine order and assured 100% genuine medicines',
         trigger: '3',
       }, {
         id: '3',
-        message: 'I\'m easy to use. You\'ll see some options in a moment, just make a selection and we\'ll get started. If you ever get stuck, just ask me for help.',
-        trigger: '4',
-      }, {
-        id: '4',
         message: 'Your name please',
         trigger: 'userName',
       }, {
         id: 'userName',
         user: true,
-        trigger: '6',
+        trigger: '4',
       }, {
-        id: '6',
+        id: '4',
         message: 'Hello {previousValue}, where do you want medicine delivery?',
-        trigger: 'locationOption',
+        trigger: '5',
       },
       {
-        id: 'locationOption',
+        id: '5',
         options: [
-          {value: 'PICK MY CURRENT LOCATION', label: 'PICK MY CURRENT LOCATION', trigger: 'autoFillLocation'},
-          {value: 'ENTER YOUR LOCATION MANUALLY', label: 'ENTER YOUR LOCATION MANUALLY', trigger: 'manualLocation'}]
+          {value: 'Pick my current location', label: 'Pick my current location', trigger: 'autoFillLocation'},
+          {value: 'Enter your locality', label: 'Enter your locality (Eg. Kurla, Andheri west etc)', trigger: 'manualLocation'}]
       }, {
         id: 'autoFillLocation',
         component: <ParentComponent component="AutoFillLocation" /> ,
@@ -74,72 +70,64 @@ class Home extends React.Component < Props, State > {
         component: (<ParentComponent component="ManualInput"/>) ,
       }, {
         id: '7',
+        message: 'Unable to locate you, due to {previousValue}. Please enter manually',
+        trigger: 'manualLocation',
+      }, {
+        id: 'user-location',
         message: 'Deliver at {previousValue}',
         trigger: '8',
-      }, {
-        id: 'cant-find-location',
-        message: 'Unable to locate you, due to {previousValue}. Please enter manually',
-        trigger: 'locationOption',
       }, {
         id: '8',
         options: [
           { value: 'confirm', label: 'CONFIRM', trigger: '9' },
-          { value: 'edit', label: 'EDIT', trigger: 'locationOption' },
+          { value: 'edit', label: 'EDIT', trigger: '5' },
         ],
+      // }, {
+      //   id: '11',
+      //   message: 'Upload a valid prescription to place a medicine order. Or you can also Book free doctor tele-consultation if you require a new prescription.',
+      //   trigger: '9'
+      // }, {
+      //   id: '12',
+      //   asMessage: true,
+      //   component: (<div><img width="100%" src={'https://s3-ap-southeast-1.amazonaws.com/pe-s3-order-on-chat-staging/valid-rx.png'} alt=""/></div>),
+      //   trigger: '9'
       }, {
         id: '9',
-        message: 'Place a medicine order now and get 25% off in our first order.',
-        trigger: '10',
-      }, {
-        id: '10',
-        message: 'Order now to get medicines delivered by tomorrow 27th June.',
-        trigger: '11'
-      }, {
-        id: '11',
-        message: 'Upload a valid prescription to place a medicine order. Or you can also Book free doctor tele-consultation if you require a new prescription.',
-        trigger: '12'
-      }, {
-        id: '12',
-        asMessage: true,
-        component: (<div><img width="100%" src={'https://s3-ap-southeast-1.amazonaws.com/pe-s3-order-on-chat-staging/valid-rx.png'} alt=""/></div>),
-        trigger: '13'
-      }, {
-        id: '13',
-        message: 'Do you have a Valid Prescription ?',
-        trigger: '14'
+        message: 'To place an order please let us know if you have a prescription or not',
+        trigger: '10'
       }, 
       {
-        id: '14',
+        id: '10',
         options: [
           { value: 'prescription', label: 'Yes', trigger: 'uploadRx' },
-          { value: 'docConsultation', label: 'No', trigger: '15' },
+          { value: 'docConsultation', label: 'No', trigger: '11' },
         ]
       }, {
         id: 'uploadRx',
         component: (<ParentComponent component="ImageUplaoder"/>)
       }, {
-        id: '15',
+        id: '11',
         message: 'We also provide doctor consultation, have a look',
-        trigger: '16'
+        trigger: '12'
       }, {
-        id: '16',
+        id: '12',
         asMessage: true,
         component: (<div><img width="100%" src={'https://s3-ap-southeast-1.amazonaws.com/pe-s3-order-on-chat-staging/doctor-consultation.png'} alt=""/></div>),
-        trigger: '17'
+        trigger: '13'
       }, {
-        id: '17',
-        message: 'Do you want to BOOK FREE DOCTOR CONSULTATION ?',
-        trigger: 'docConsultation'
+        id: '13',
+        message: 'Get free doctor consultation?',
+        trigger: '14'
       }, {
-        id: 'docConsultation',
+        id: '14',
         options: [
           { value: 'yes', label: 'Yes', trigger: 'bookDoctorCons' },
-          { value: 'no', label: 'No', trigger: '18' },
+          { value: 'no', label: 'No', trigger: '15' },
         ],
       }, {
-        id: '18',
-        message: 'Thanks for interaction!! Have a great day!',
-        end: true
+        id: '15',
+        message: 'Please enter your mobile number so that I can help you avail 25% off on your first medicine order. ',
+        trigger: 'end-mobile-number',
       }, {
         id: 'bookDoctorCons',
         message: 'Wait a minute, I will do that for you',
@@ -147,7 +135,35 @@ class Home extends React.Component < Props, State > {
       }, {
         id: '19',
         message: 'Please enter your mobile no.',
+        trigger: 'docCons-mobile-number',        
+      }, {
+        id: '17',
+        message: 'Please enter your mobile no.',
         trigger: 'mobile-number',        
+      }, {
+        id: 'docCons-mobile-number',
+        user: true,
+        validator: (value) => {
+          var phoneno = /^\(?([5-9]{1})\)?([0-9]{9})$/;
+          if(value.match(phoneno)) {
+            return true;
+          } else {
+            return `Please enter a valid no`;
+          }
+        },
+        trigger: '22',
+      }, {
+        id: 'end-mobile-number',
+        user: true,
+        validator: (value) => {
+          var phoneno = /^\(?([5-9]{1})\)?([0-9]{9})$/;
+          if(value.match(phoneno)) {
+            return true;
+          } else {
+            return `Please enter a valid no`;
+          }
+        },
+        trigger: '16',
       }, {
         id: 'mobile-number',
         user: true,
@@ -174,7 +190,11 @@ class Home extends React.Component < Props, State > {
         trigger: '22',
       }, {
         id: '22',
-        message: 'Thanks for interaction!! Have a great day!',
+        message: 'Thanks you for placing an order. Our customer support agent will contact you shortly. For any queries please call on +91-9992999929.',
+        end: true
+      }, {
+        id: '16',
+        message: 'Thanks you. For any queries please call on +91-9992999929.',
         end: true
       }],
       chatBotConfig: {
@@ -199,7 +219,7 @@ class Home extends React.Component < Props, State > {
           maxWidth: '70%'
         },
         contentStyle: {
-          height: 'calc(100vh - 139px)'
+          height: 'calc(100vh - 200px)'
         },
         submitButtonStyle: {
           background: '#3f906d',
@@ -222,27 +242,39 @@ class Home extends React.Component < Props, State > {
     // this.setState({ userName });
   }
   handleEnd = (val) => {
-    let orderType = '';
-    if(val.renderedSteps.find(step => step.id == 'uploadRx')) {
-      orderType =  'prescription';
-    }
-    if(val.renderedSteps.find(step => step.id == 'bookDoctorCons')) {
-      orderType =  'doctor consultation';
-    }
     let userDetails = {
-      name: val.renderedSteps.find(step => step.id == 'userName').value,
-      attachments: val.renderedSteps.find(step => step.id == 'uploadRx').value,
-      mobile: val.renderedSteps.find(step => step.id == 'mobile-number').value,
-      address: val.renderedSteps.find(step => step.id == 'address').value,
-      orderType,
+      name: null,
+      mobile: null,
+      orderType: null,
+      attachments: null,
+      address: null,
+      geoLocation: null,
     };
+    userDetails.name= val.renderedSteps.find(step => step.id == 'userName').value;
+    if(val.renderedSteps.find(step => step.id == 'uploadRx')) {
+      userDetails.orderType =  'prescription';
+      userDetails.attachments = val.renderedSteps.find(step => step.id == 'uploadRx').value;
+      userDetails.mobile= val.renderedSteps.find(step => step.id == 'mobile-number').value;
+      userDetails.address= val.renderedSteps.find(step => step.id == 'address').value;
+    } else if(val.renderedSteps.find(step => step.id == 'bookDoctorCons')) {
+      userDetails.mobile= val.renderedSteps.find(step => step.id == 'docCons-mobile-number').value;
+      userDetails.orderType = 'doctor consultation';
+    } else {
+      userDetails.mobile= val.renderedSteps.find(step => step.id == 'end-mobile-number').value;
+      userDetails.orderType = 'none';
+    }
+    if(val.renderedSteps.find(step => step.id == 'autoFillLocation')) {
+      userDetails.geoLocation= val.renderedSteps.find(step => step.id == 'autoFillLocation').value;
+    } else if(val.renderedSteps.find(step => step.id == 'manualLocation')) {
+      userDetails.geoLocation= val.renderedSteps.find(step => step.id == 'manualLocation').value;
+    }
     let formData = {
       DeliveryStreamName: "pe-kinesis-order-on-chat",
       Record: {
         Data: userDetails
       }
     }
-    console.log('called in handle', formData);
+    console.log('called before Submit', formData);
     this.props.dispatch(submitForm(formData))
   }
   render() {
