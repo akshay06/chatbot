@@ -1,4 +1,4 @@
-import { UPDATE_COMMON, GET_LOCATION_FULFILLED } from '../actions/CommonAction'
+import { UPDATE_COMMON, GET_LOCATION_FULFILLED, SUBMIT_FORM_FULFILLED } from '../actions/CommonAction'
 
 declare let window: any;
 
@@ -20,6 +20,12 @@ export const CommonReducer = (state = initialState, action) => {
       return {
         ...state, 
         geoLocation: action.payload.results
+      }
+    case SUBMIT_FORM_FULFILLED:
+      console.log('alalalala', action.payload);
+      return {
+        ...state, 
+        formResponse: action.payload
       }
     // case '@@router/LOCATION_CHANGE':
     //   if (typeof window !== 'undefined') {

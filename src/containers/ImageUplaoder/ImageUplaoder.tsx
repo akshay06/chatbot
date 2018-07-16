@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { getLocation, updateCommon } from '../../actions/CommonAction';
-
+import * as styles from "./ImageUplaoder.scss";
 type Props = {
   dispatch: any,
   steps: any,
@@ -13,7 +12,6 @@ type Props = {
 }
 
 type State = {
-  image: any,
 }
 declare let window: any;
 
@@ -21,13 +19,13 @@ class ImageUplaoder extends React.Component<Props, State> {
 
   constructor(props){
     super(props)
-    this.state = {image: []}
   }
   componentDidMount() {
     
   }
   onImageChange = (event) => {
     let files = event.target.files; // FileList object
+    let images = []
     // Loop through the FileList and render image files as thumbnails.
     for (var i = 0, f; f = files[i]; i++) {
 
@@ -41,16 +39,17 @@ class ImageUplaoder extends React.Component<Props, State> {
                 span.innerHTML = ['<img width="100%" class="thumb" src="', e.target.result,
                     '" title="', escape(theFile.name), '"/>'].join('');
                 document.getElementById('previewImg').insertBefore(span, null);
-                // images.push(e.target.result)
+                images.push(e.target.result)
             };
         })(f);
         // Read in the image file as a data URL.
         reader.readAsDataURL(f);
-        this.trigger(files)
     }
+    this.trigger(files, images)
   }
-  trigger = (files) => {
-    this.props.triggerNextStep({trigger: '19', value: files})
+  trigger = (files, images) => {
+    // console.log('alal', files, images);
+    this.props.triggerNextStep({trigger: '17', value: images})
   }
   
   componentWillReceiveProps(nextProps) {
@@ -61,9 +60,11 @@ class ImageUplaoder extends React.Component<Props, State> {
     // const style = {opacity: '0'}
     return (
       <div id="ImageUplaoder" style={{ width: '100%', position: 'relative' }}>
-        <input accept="image/*" name="file" multiple type="file" onChange={this.onImageChange} className="filetype" id="group_image"/>
-        {/* <label htmlFor="file">Click Here to upload</label> */}
-        {console.log('this.state.image', this.state.image)}
+        <input accept="image/*" name="file" multiple type="file" onChange={this.onImageChange} className={styles.imageUploadBtn} id="group_image"/>
+        <label htmlFor="group_image" className={styles.customFileUpload}>
+          <img width={20} style={{marginRight: '15px'}} src={require('images/upload-icon.png')} />
+          <span>Click here to Upload <br/>(multiple select)</span>
+        </label>
         <div id='previewImg'></div>
       </div>
     );

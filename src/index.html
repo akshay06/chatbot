@@ -4,13 +4,58 @@
 <head>
   <meta charset="UTF-8" />
   <base href="/">
-  <title>Developement Chatbot!</title>
+  <title>PharmEasy Order on chat!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
   <!-- <link rel="shortcut icon" type="image/x-icon" href=""> -->
    <!-- Splash screen starts -->
    <style media="screen">
-      
-     
+      #locationField, #controls {
+        position: relative;
+        width: 100%;
+      }
+      #autocomplete {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 97%;
+        height: 30px;
+        font-size: 14px;
+        outline: none;
+        border: none;
+        border-bottom: 1px solid rgba(0,0,0,0.5);
+        padding-left: 7px;
+      }
+      .label {
+        text-align: right;
+        font-weight: bold;
+        width: 100px;
+        color: #303030;
+      }
+      #address {
+        border: 1px solid #000090;
+        background-color: #f0f0ff;
+        width: 480px;
+        padding-right: 2px;
+      }
+      #address td {
+        font-size: 10pt;
+      }
+      .field {
+        width: 99%;
+      }
+      .slimField {
+        width: 80px;
+      }
+      .wideField {
+        width: 200px;
+      }
+      #locationField {
+        height: 30px;
+        margin-bottom: 2px;
+      }
+      .pac-logo:after {
+        display: none;
+      }
     </style>
   <link rel="stylesheet" type="text/css" href="/bundle.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400" rel="stylesheet">

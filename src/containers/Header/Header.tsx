@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <div className={st.headerContainer}>
       <div>
-        <div className={st.title}>HEALTH GINIE</div>
+        <div className={st.title}>PHARMEASY</div>
         <div className={st.subtitle}>Khayal rakhe apno ka</div>
       </div>
       <div>

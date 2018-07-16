@@ -1,3 +1,2 @@
-export const headerContainer: string;
-export const title: string;
-export const subtitle: string;
+export const imageUploadBtn: string;
+export const customFileUpload: string;

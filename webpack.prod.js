@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require("webpack");
-//const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const SimpleProgressPlugin = require('webpack-simple-progress-plugin');
 const dependencies = require('./package.json');
@@ -206,11 +206,11 @@ module.exports = {
         }),            
         new webpack.optimize.AggressiveMergingPlugin(),
         //  new webpack.optimize.DedupePlugin(),
-        // new HtmlWebpackPlugin({
-        //   template: 'bundle.html',
-        //   filename: 'index.html',
-        //   inject: true
-        // }),
+        new HtmlWebpackPlugin({
+          template: 'src/index.html',
+          filename: 'index.html',
+          inject: true
+        }),
         // new webpack.optimize.CommonsChunkPlugin({
         //     name: ['vendor'],
         //     minChunks: ({ resource }) => /node_modules/.test(resource), // vendor: creates vendor.js, manifest: whether dependencies have been modified
