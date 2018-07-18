@@ -39,17 +39,29 @@ class ImageUplaoder extends React.Component<Props, State> {
                 span.innerHTML = ['<img width="100%" class="thumb" src="', e.target.result,
                     '" title="', escape(theFile.name), '"/>'].join('');
                 document.getElementById('previewImg').insertBefore(span, null);
-                images.push(e.target.result)
+                let base64img = e.target.result.substr(e.target.result.indexOf('base64,')+7, e.target.result.length);
+                images.push(base64img)
             };
         })(f);
         // Read in the image file as a data URL.
         reader.readAsDataURL(f);
     }
-    this.trigger(files, images)
+    setTimeout(() => {
+      this.trigger(files, images);      
+    }, 100);
   }
   trigger = (files, images) => {
-    // console.log('alal', files, images);
-    this.props.triggerNextStep({trigger: '17', value: images})
+    let imageArr = [];
+    Object.keys(files).map( (file, index) => {
+      let fileObj = {
+        filename: files[file].name,
+        encoding: 'base64',
+        content: images[index]
+      };
+      imageArr.push(fileObj);
+    });
+    // document.getElementById('ImageUplaoder').style.height = '40px';
+    this.props.triggerNextStep({trigger: '17', value: imageArr})
   }
   
   componentWillReceiveProps(nextProps) {

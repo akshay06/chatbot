@@ -175,16 +175,16 @@ class Home extends React.Component < Props, State > {
             return `Please enter a valid no`;
           }
         },
-        trigger: '20',
-      }, {
-        id: '20',
-        message: 'Please enter complete address',
-        trigger: 'address',
-      }, {
-        id: 'address',
-        user: true,
         trigger: '21',
       }, {
+      //   id: '20',
+      //   message: 'Please enter complete address',
+      //   trigger: 'address',
+      // }, {
+      //   id: 'address',
+      //   user: true,
+      //   trigger: '21',
+      // }, {
         id: '21',
         message: 'Placing your order.',
         trigger: '22',
@@ -243,19 +243,19 @@ class Home extends React.Component < Props, State > {
   }
   handleEnd = (val) => {
     let userDetails = {
-      name: null,
-      mobile: null,
-      orderType: null,
-      attachments: null,
-      address: null,
-      geoLocation: null,
+      name: '',
+      mobile: '',
+      orderType: '',
+      attachments: '',
+      address: '',
+      geoLocation: '',
     };
     userDetails.name= val.renderedSteps.find(step => step.id == 'userName').value;
     if(val.renderedSteps.find(step => step.id == 'uploadRx')) {
       userDetails.orderType =  'prescription';
       userDetails.attachments = val.renderedSteps.find(step => step.id == 'uploadRx').value;
       userDetails.mobile= val.renderedSteps.find(step => step.id == 'mobile-number').value;
-      userDetails.address= val.renderedSteps.find(step => step.id == 'address').value;
+      // userDetails.address= val.renderedSteps.find(step => step.id == 'address').value;
     } else if(val.renderedSteps.find(step => step.id == 'bookDoctorCons')) {
       userDetails.mobile= val.renderedSteps.find(step => step.id == 'docCons-mobile-number').value;
       userDetails.orderType = 'doctor consultation';
@@ -271,7 +271,7 @@ class Home extends React.Component < Props, State > {
     let formData = {
       DeliveryStreamName: "pe-kinesis-order-on-chat",
       Record: {
-        Data: userDetails
+        Data: JSON.stringify(userDetails)
       }
     }
     console.log('called before Submit', formData);

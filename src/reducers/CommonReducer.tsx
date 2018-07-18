@@ -22,7 +22,6 @@ export const CommonReducer = (state = initialState, action) => {
         geoLocation: action.payload.results
       }
     case SUBMIT_FORM_FULFILLED:
-      console.log('alalalala', action.payload);
       return {
         ...state, 
         formResponse: action.payload

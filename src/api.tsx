@@ -24,9 +24,16 @@ export const Api = {
   },
   post: (params: postParams) => {
     let headers = {
-      'content-type': 'application/json'
+      'content-type': 'application/json',
+      'X-Api-Key' : 'M1xJND6ZSH8Hp75Q1WWS07zhyxxIUKYX2RN1UlzG'
     }
-    return ajax({url: params.url, body: JSON.stringify(params.postObj), crossDomain:true, method:'post', headers})
+    return ajax({
+      url: params.url,
+      headers,
+      method:'post',
+      body: JSON.stringify(params.postObj),
+      crossDomain: true,
+    })
     .map(response => handleResponse(response)).catch(error => handleError(error))
   },  
 }
