@@ -161,7 +161,7 @@ module.exports = {
             '__DEVTOOLS__': false                           // Doesn´t have effect on my example
         }),
         new ExtractTextPlugin({
-            filename: 'style.[contenthash].css', // create a single css file 
+            filename: 'styles.css', // create a single css file 
             allChunks: true
         }),
         new WrapperPlugin({

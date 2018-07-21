@@ -104,7 +104,9 @@ module.exports = {
             minChunks: Infinity
         }),
         new webpack.DefinePlugin({
-            'process.env': processEnv,
+            'process.env':{
+                'NODE_ENV': JSON.stringify('development'),
+            },
             'BROWSER': true
         }),
         new ExtractTextPlugin({

@@ -4,7 +4,7 @@
   "description": "chatbot",
   "main": "index.js",
   "scripts": {
-    "build": "NODE_ENV=production ENV_URL=http://localhost:5001/ API_URL=https://aaa.chatbot.com/  node server.js && node dist/production-server.js",
+    "build": "ENV_URL=http://localhost:5001/ API_URL=https://aaa.chatbot.com/  node server.js && node dist/production-server.js",
     "release": "node server.js",
     "start": "ENV_URL=http://localhost:4000/ API_URL=https://aaa.chatbot.com/ node server.js",
     "dev": "webpack-dev-server --open --config='webpack.dev.js'",

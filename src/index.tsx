@@ -17,9 +17,9 @@ render(
 
 if (process.env.NODE_ENV !== 'production' && module.hot) {
   module.hot.accept('./containers/App/App', () => {
-    const PostcardApp = require('./containers/App/App').App
+    const ChatbotApp = require('./containers/App/App').App
     render(
-      <PostcardApp />,
+      <ChatbotApp />,
       document.getElementById('app')
     )
   })

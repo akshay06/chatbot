@@ -82,7 +82,7 @@ module.exports = {
         main: './src/index.tsx'
     },
     output: {
-        filename: '[name].[chunkhash].js',
+        filename: '[name].js',
         publicPath: PUBLIC_PATH,
         path: __dirname + "/tmp_dist"
     },
@@ -211,13 +211,15 @@ module.exports = {
         //     name: 'manifest'
         // }),
         new webpack.DefinePlugin({
-            'process.env': processEnv,
+            'process.env':{
+                'NODE_ENV': JSON.stringify('production'),
+            },
             'BROWSER': true,
             'DEBUG': false,
             '__DEVTOOLS__': false
         }),
         new ExtractTextPlugin({
-            filename: 'style.[contenthash].css', // create a single css file 
+            filename: 'styles.css', // create a single css file 
             allChunks: true
         }),
         // new ScriptExtHtmlWebpackPlugin({
