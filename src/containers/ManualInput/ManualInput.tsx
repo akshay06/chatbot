@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
+import { gtmPush } from '../../pixels';
 
 type Props = {
   dispatch: any,
@@ -41,7 +42,8 @@ class ManualInput extends React.Component<Props, State> {
   }
   trigger = (value) => {
     document.getElementById('locationField').style.height = '40px';
-    this.props.triggerNextStep({trigger:'user-location', value})
+    document.getElementById('locationField').style.pointerEvents = 'none';
+    this.props.triggerNextStep({trigger: () => {gtmPush('manualLocation'); return 'user-location'}, value})
   }
 
   initAutocomplete = () => {

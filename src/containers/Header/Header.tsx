@@ -9,7 +9,7 @@ const Header = () => {
         <div className={st.subtitle}>Khayal rakhe apno ka</div>
       </div>
       <div>
-        <img src="https://image.ibb.co/mq0NPo/Screen_Shot_2018_06_22_at_1_13_28_AM.png" alt="PE"/>
+        <img src="https://s3-ap-southeast-1.amazonaws.com/pe-s3-order-on-chat-staging/bot-icon.png" alt="PE"/>
       </div>
     </div>
   )};

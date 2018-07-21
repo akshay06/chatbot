@@ -39,7 +39,6 @@ export const Api = {
 }
 
 const handleResponse = (response) => {
-  console.log('called', response);
   if(response.response == null && response.status == 204) {
     throw response;  
   }

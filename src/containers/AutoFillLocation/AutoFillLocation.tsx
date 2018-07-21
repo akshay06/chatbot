@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { getLocation, updateCommon } from '../../actions/CommonAction';
+import { gtmPush } from '../../pixels';
 
 type Props = {
   dispatch: any,
@@ -49,12 +50,12 @@ class AutoFillLocation extends React.Component<Props, State> {
     this.trigger(error.message);
   }
   trigger = (value) => {
-    this.props.triggerNextStep({trigger:'7', value})
+    this.props.triggerNextStep({trigger: () => {gtmPush('autoFillLocation'); return '8'}, value})
   }
   
   componentWillReceiveProps(nextProps) {
     if(nextProps.commonReducer.geoLocation && JSON.stringify(this.props.commonReducer.geoLocation) !== JSON.stringify(nextProps.commonReducer.geoLocation)) {
-      this.props.triggerNextStep({trigger:'user-location', value: nextProps.commonReducer.geoLocation[0].formatted_address})      
+      this.props.triggerNextStep({trigger: () => {gtmPush('autoFillLocation'); return 'user-location'}, value: nextProps.commonReducer.geoLocation[0].formatted_address})      
     }
   }
 
