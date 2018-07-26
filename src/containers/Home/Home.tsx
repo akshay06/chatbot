@@ -103,20 +103,11 @@ class Home extends React.Component < Props, State > {
           { value: 'confirm', label: 'CONFIRM', trigger: () => {gtmPush('9'); return '10'}},
           { value: 'edit', label: 'EDIT', trigger: () => {gtmPush('9'); return '7'}},
         ],
-      }, {
+      },
+      {
         id: '10',
-        message: 'To place an order please let us know if you have a prescription or not',
-        trigger: () => {gtmPush('10'); return 'has-prescription'}
-      }, {
-        id: 'has-prescription',
-        options: [
-          { value: 'yes', label: 'Yes', trigger: () => {gtmPush('has-prescription'); return '12'}},
-          { value: 'no', label: 'No', trigger: () => {gtmPush('has-prescription'); return '12'}},
-        ]
-      }, {
-        id: '12',
         message: 'Please enter your mobile',
-        trigger: () => {gtmPush('12'); return 'mobile-number'}
+        trigger: () => {gtmPush('10'); return 'mobile-number'}
       }, {
         id: 'mobile-number',
         user: true,
@@ -128,13 +119,13 @@ class Home extends React.Component < Props, State > {
             return `Please enter a valid no`;
           }
         },
-        trigger: () => {gtmPush('mobile-number'); return '13'}
+        trigger: () => {gtmPush('mobile-number'); return '11'}
       }, {
-        id: '13',
+        id: '11',
         message: 'Taking your request.',
-        trigger: () => {gtmPush('13'); return '14'}
+        trigger: () => {gtmPush('11'); return '12'}
       }, {
-        id: '14',
+        id: '12',
         message: 'Thank you for your time, our executive will call you shortly to place an order for you.',
         end: true
       }],
@@ -155,7 +146,6 @@ class Home extends React.Component < Props, State > {
           background: '#3f906d',
         },
         bubbleStyle: {
-          // borderRadius: '12px 12px 12px 0',
           boxShadow: '0 1px 12px 0 rgba(181, 192, 204, 0.5)',
           fontSize: '16px',
           marginTop: 0,
@@ -189,7 +179,6 @@ class Home extends React.Component < Props, State > {
     let userDetails = {
       name: '',
       mobile: '',
-      orderType: '',
       geoLocation: '',
     };
     if(val.values.indexOf('medicine-no') >= 0) {
@@ -198,12 +187,6 @@ class Home extends React.Component < Props, State > {
     }
     userDetails.name = val.renderedSteps.find(step => step.id == 'userName').value;
     userDetails.mobile = val.renderedSteps.find(step => step.id == 'mobile-number').value;
-    let hasPrescription = val.renderedSteps.find(step => step.id == 'has-prescription');
-    if (hasPrescription.value === 'yes') {
-      userDetails.orderType = 'with prescription';
-    } else if (hasPrescription.value === 'no') {
-      userDetails.orderType = 'without prescription';
-    }
     let autoFill = val.renderedSteps.find(step => step.id == 'autoFillLocation');
     let manualLocation = val.renderedSteps.find(step => step.id == 'manualLocation');
     if (autoFill) {
