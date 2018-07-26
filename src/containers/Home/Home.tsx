@@ -42,7 +42,7 @@ class Home extends React.Component < Props, State > {
         trigger: () => {gtmPush('1'); return '2'},
       }, {
         id: '2',
-        message: 'Order medicines and get 25% off on your first medicine order and assured 100% genuine medicines',
+        message: 'Order medicines and get 20% off on all medicines and assured 100% genuine medicines',
         trigger: () => {gtmPush('2'); return '3'},
       }, {
         id: '3',
@@ -189,10 +189,10 @@ class Home extends React.Component < Props, State > {
     userDetails.mobile = val.renderedSteps.find(step => step.id == 'mobile-number').value;
     let autoFill = val.renderedSteps.find(step => step.id == 'autoFillLocation');
     let manualLocation = val.renderedSteps.find(step => step.id == 'manualLocation');
-    if (autoFill) {
-      userDetails.geoLocation = autoFill.value;
-    } else if (manualLocation) {
+    if (manualLocation) {
       userDetails.geoLocation = manualLocation.value;
+    } else if (autoFill) {
+      userDetails.geoLocation = autoFill.value;
     }
     let formData = {
       DeliveryStreamName: "pe-kinesis-order-on-chat",
