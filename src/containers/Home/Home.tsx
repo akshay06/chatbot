@@ -131,6 +131,7 @@ class Home extends React.Component < Props, State > {
       }],
       chatBotConfig: {
         // recognitionEnable: true,
+        // botDelay: 1500,
         avatarStyle: {
           boxShadow: 'none',
           borderRadius: 0,
