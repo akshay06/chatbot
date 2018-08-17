@@ -6,6 +6,7 @@ import Header from '../Header/Header';
 import ParentComponent from '../ParentComponent/ParentComponent';
 import { submitForm } from '../../actions/CommonAction';
 import { gtmPush } from '../../pixels';
+require('./Home.scss');
 
 // all available props
 const theme = {
@@ -34,7 +35,6 @@ class Home extends React.Component < Props, State > {
 
   constructor(props) {
     super(props)
-
     this.state = {
       steps: [{
         id: '1',
@@ -47,7 +47,7 @@ class Home extends React.Component < Props, State > {
       }, {
         id: '3',
         message: 'Your name please',
-        trigger: () => {gtmPush('3'); return 'userName'},
+        trigger: () => {gtmPush('3'); this.showFooter(true);return 'userName'},
       }, {
         id: 'userName',
         user: true,
@@ -59,7 +59,7 @@ class Home extends React.Component < Props, State > {
             return `Please enter a valid name`;
           }
         },
-        trigger: () => {gtmPush('username'); return '4'},
+        trigger: () => {gtmPush('username');this.showFooter(); return '4'},
       }, {
         id: '4',
         message: 'Hello there, are you looking for medicines at Flat 20% discount?',
@@ -81,7 +81,7 @@ class Home extends React.Component < Props, State > {
         id: '7',
         options: [
           {value: 'Pick my current location', label: 'Pick my current location', trigger: () => {gtmPush('7'); return 'autoFillLocation'}},
-          {value: 'Enter your locality', label: 'Enter your locality (Eg. Kurla, Andheri west etc)',trigger: () => {gtmPush('7'); return 'manualLocation'}}
+          {value: 'Enter your locality', label: 'Enter your locality (Eg. Kurla, Andheri etc)',trigger: () => {gtmPush('7'); this.showFooter();return 'manualLocation'}}
         ]
       }, {
         id: 'autoFillLocation',
@@ -92,7 +92,7 @@ class Home extends React.Component < Props, State > {
       }, {
         id: '8',
         message: 'Unable to locate you, due to {previousValue}. Please enter manually',
-        trigger: () => {gtmPush('8'); return 'manualLocation'}
+        trigger: () => {gtmPush('8');this.showFooter(); return 'manualLocation'}
       }, {
         id: 'user-location',
         message: 'Deliver near {previousValue} ?',
@@ -107,7 +107,7 @@ class Home extends React.Component < Props, State > {
       {
         id: '10',
         message: 'Please enter your mobile',
-        trigger: () => {gtmPush('10'); return 'mobile-number'}
+        trigger: () => {gtmPush('10');this.showFooter(true, 'number'); return 'mobile-number'}
       }, {
         id: 'mobile-number',
         user: true,
@@ -119,7 +119,7 @@ class Home extends React.Component < Props, State > {
             return `Please enter a valid no`;
           }
         },
-        trigger: () => {gtmPush('mobile-number'); return '11'}
+        trigger: () => {gtmPush('mobile-number'); this.showFooter();return '11'}
       }, {
         id: '11',
         message: 'Taking your request.',
@@ -141,10 +141,12 @@ class Home extends React.Component < Props, State > {
         userDelay: 0,
         enableMobileAutoFocus: true,
         bubbleOptionStyle: {
-          marginLeft: '50px',
-          borderRadius: '6px',
-          color: '#fff',
-          background: '#3f906d',
+          borderRadius: '4px',
+          color: 'rgb(255, 255, 255)',
+          background: 'rgb(63, 144, 109)',
+          width: 'calc(100% - 14px)',
+          padding: '12px 7px',
+          textAlign: 'center'
         },
         bubbleStyle: {
           boxShadow: '0 1px 12px 0 rgba(181, 192, 204, 0.5)',
@@ -153,7 +155,7 @@ class Home extends React.Component < Props, State > {
           maxWidth: '70%'
         },
         contentStyle: {
-          height: 'calc(100vh - 200px)',
+          height: 'calc(100vh - 135px)',
           background: "url('https://s3-ap-southeast-1.amazonaws.com/pe-s3-order-on-chat-staging/background.png')",
           backgroundPosition: 'center'
 
@@ -175,7 +177,22 @@ class Home extends React.Component < Props, State > {
       },
     };
   }
-
+  componentDidMount () {
+    this.showFooter();
+  }
+  showFooter = (showFooter = false, inputType = null) => {
+    let footer = document.getElementsByClassName('rsc-footer')[0];
+    let contentBody = document.getElementsByClassName('rsc-content')[0];
+    if (showFooter) {
+      contentBody['style'].height = 'calc(100vh - 185px)';
+      if(inputType == 'number')
+      document.getElementsByClassName('rsc-input')[0]['type'] = 'tel'
+      footer['style'].display = 'block';
+    } else {
+      contentBody['style'].height = 'calc(100vh - 126px)';
+      footer['style'].display = 'none';
+    }
+  }
   handleEnd = (val) => {
     let userDetails = {
       name: '',

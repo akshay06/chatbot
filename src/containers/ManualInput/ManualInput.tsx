@@ -69,8 +69,8 @@ class ManualInput extends React.Component<Props, State> {
   render() {
     return (
       <>
-        <div style={{height: '200px'}} id="locationField">
-          <input id="autocomplete" autoFocus placeholder="Start typing address" type="text"></input>
+        <div id="locationField">
+          <input id="autocomplete" autoFocus placeholder="Start typing locality" type="text"></input>
         </div>
       </>
     );

@@ -27,9 +27,6 @@ class ParentComponent extends React.Component<Props, State> {
       isDuplicateComponent: false
     }
   }
-  componentWillMount() {
-
-  }
 
   components = {
     AutoFillLocation: AutoFillLocation,
@@ -39,7 +36,6 @@ class ParentComponent extends React.Component<Props, State> {
   
   render() {
     const RenderComponent = this.components[this.props.component];
-
     return (
       <RenderComponent {...this.props} />
     );    

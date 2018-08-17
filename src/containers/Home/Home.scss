@@ -2,4 +2,13 @@
     body {
         margin: 0;
     }
+    .rsc-os-options {
+        display: flex;
+        flex-direction: row;
+        padding: 0 8px;
+    }
+    .rsc-os-option {
+        flex: 50%;
+        margin: 0 8px;
+    }
 }
